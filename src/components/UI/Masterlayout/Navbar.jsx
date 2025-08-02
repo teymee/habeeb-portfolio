@@ -47,8 +47,8 @@ export default function Navbar() {
     },
   ];
   return (
-    <nav className="w-1/2 mx-auto rounded-full   shadow-lg bg-white-200">
-      <section className="flex justify-between px-10 ">
+    <nav className="w-[40%] mx-auto rounded-full   shadow-lg bg-white-200">
+      <section className="flex justify-between px-8 ">
         {navs.map(({ activeIcon, icon, name, link }) => {
           let isActive = pathname === link;
           return (
@@ -62,7 +62,7 @@ export default function Navbar() {
               >
                 <img src={isActive ? activeIcon : icon} alt={name} />
 
-                <p>{name}</p>
+                <p className="text-sm">{name}</p>
               </div>
             </Link>
           );

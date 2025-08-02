@@ -1,0 +1,46 @@
+import React from "react";
+
+import epump from "@/assets/svg/epump-snip.svg";
+import ProjectSnippet from "../UI/Cards/ProjectSnippet";
+
+export default function Showcase() {
+  const obj = {
+    snippet: epump,
+    name: "Epump",
+    year: "2025",
+  };
+
+  const top = Array(4).fill(obj);
+  const bottom = Array(3).fill(obj);
+  return (
+    <section>
+      {/* 🚨 header  */}
+      <section className="wrapper justify-between flex items-center">
+        <h1 className="text-[2.5rem] leading-12 font-thin text-black-200">
+          Shots from many other
+          <br />
+          <span className="font-bold"> Projects </span>
+        </h1>
+      </section>
+
+      {/* 🚨showcase  */}
+      <section className="space-y-4 py-10 w-full">
+        {/* 🚨top */}
+        <section className="grid grid-cols-4 gap-x-80 justify-center overflow-hidden">
+          {top.map((item, index) => {
+            return <ProjectSnippet key={index} {...item} />;
+          })}
+        </section>
+        {/*  */}
+
+        {/* 🚨bottom */}
+        <section className="grid grid-cols-3 gap-x-4 justify-center w-full">
+          {bottom.map((item, index) => {
+            return <ProjectSnippet key={index} {...item} />;
+          })}
+        </section>
+        {/*  */}
+      </section>
+    </section>
+  );
+}

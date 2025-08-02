@@ -8,10 +8,12 @@ import twitter from "@/assets/svg/twitter.svg";
 import linkedIn from "@/assets/svg/linkedIn.svg";
 export default function Footer() {
   const { pathname } = useLocation();
+
+  const applyRadius =pathname !== "/" || pathname !== "/about"
   return (
     <section
       className={`bg-black-700  py-20 bg-[url(@/assets/svg/noise.svg)] ${
-        pathname !== "/" && "rounded-t-2xl"
+        !applyRadius ? "rounded-t-2xl" : undefined
       }`}
     >
       <section className="wrapper bg-black-800 rounded-xl space-y-10 py-10 flex flex-col justify-center">

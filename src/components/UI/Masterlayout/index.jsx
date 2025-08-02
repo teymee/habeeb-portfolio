@@ -4,11 +4,11 @@ import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 
 // 🚨 assets
-import avatar from "@/assets/svg/avatar.svg";
+// import avatar from "@/assets/svg/avatar.svg";
 
 export default function Masterlayout() {
-  const text = "Contact Me • Contact Me • Contact Me • ";
-  const chars = text.split("");
+//   const text = "Contact Me • Contact Me • Contact Me • ";
+//   const chars = text.split("");
   const { pathname } = useLocation();
 
   useEffect(() => {

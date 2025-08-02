@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "@/pages/Home";
 import Masterlayout from "@/components/UI/Masterlayout";
 import Work from "./pages/Work";
+import About from "./pages/About";
 
 function App() {
   const routes = createBrowserRouter([
@@ -19,6 +20,7 @@ function App() {
           path: "work",
           element: <Work />,
         },
+        { path: "about", element: <About /> },
       ],
     },
   ]);

@@ -11,6 +11,7 @@
   /* white  */
   --color-white-100: #d1d1d1;
   --color-white-200: #f9f9fa;
+  --color-white-300: #1f1f1f;
 
   --color-white-600: #e8e8e8;
   --color-white-900: #6b6b6b;
@@ -24,6 +25,7 @@
 
   --color-black-600: #f5f5f7;
   --color-black-700: #212121;
+  --color-black-800: #191919;
 
   /* gray  */
   --color-gray-1000: #363638;
@@ -41,6 +43,10 @@
 
 .position-center {
   @apply top-[50%] left-[50%] -translate-[50%];
+}
+
+.vertical-center {
+  @apply flex flex-col justify-center;
 }
 
 .wrapper {

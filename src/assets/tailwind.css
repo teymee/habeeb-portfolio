@@ -28,7 +28,7 @@
   --color-black-800: #191919;
 
   /* gray  */
-  --color-gray-1000: #363638;
+  --color-gray-1000: #EFEEED;
   --color-gray-2000: #03020a;
 
   /* blue  */
@@ -48,7 +48,9 @@
 .vertical-center {
   @apply flex flex-col justify-center;
 }
-
+.row-center{
+  @apply w-full flex justify-center items-center h-full
+}
 .wrapper {
   @apply w-[90%] mx-auto;
 }

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 
 // 🚨 assets
@@ -9,10 +9,13 @@ import avatar from "@/assets/svg/avatar.svg";
 export default function Masterlayout() {
   const text = "Contact Me • Contact Me • Contact Me • ";
   const chars = text.split("");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
   return (
     <section className="relative h-full">
-   
-
       <section className="bottom-10 fixed w-full z-50">
         <Navbar />
       </section>
@@ -21,7 +24,6 @@ export default function Masterlayout() {
     </section>
   );
 }
-
 
 //    <section className="fixed z-50 bottom-0 right-0">
 //         <div className="relative w-64 h-64 flex items-center justify-center">

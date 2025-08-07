@@ -3,7 +3,7 @@ import React from "react";
 // 🚨 assets
 import avatar from "@/assets/svg/olaitan.svg";
 import Comment from "../UI/Cards/Comment";
-export default function Recommendations() {
+export default function Recommendations({isRounded = true}) {
   const obj = {
     avatar,
     comment:
@@ -14,7 +14,11 @@ export default function Recommendations() {
   };
   const comments = Array(4).fill(obj);
   return (
-    <section className="bg-black-700 rounded-t-2xl py-20 bg-[url(@/assets/svg/noise.svg)]">
+    <section
+      className={`bg-black-700 py-20 bg-[url(@/assets/svg/noise.svg)] ${
+        isRounded ? "rounded-t-2xl " : undefined
+      }`}
+    >
       <section className="wrapper space-y-10">
         <div>
           <h1 className="text-[2.5rem] text-black-500 font-semibold ">

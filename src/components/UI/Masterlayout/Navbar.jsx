@@ -47,7 +47,7 @@ export default function Navbar() {
     },
   ];
   return (
-    <nav className="w-[40%] mx-auto rounded-full   shadow-lg bg-white-200">
+    <nav className="w-[40%] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
       <section className="flex justify-between px-8 ">
         {navs.map(({ activeIcon, icon, name, link }) => {
           let isActive = pathname === link;

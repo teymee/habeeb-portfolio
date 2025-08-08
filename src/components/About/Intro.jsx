@@ -32,7 +32,7 @@ export default function Intro() {
         </div>
 
         <section className="flex justify-between ">
-          <section className="w-[40%] text-[20px] space-y-10 text-black-400">
+          <section className="w-[40%] text-size20 space-y-10 text-black-400">
             <div className="">
               I’m habeeb, an experienced product designer who speaks fluent
               Design and design with business goals at heart . In the last 4

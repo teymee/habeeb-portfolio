@@ -19,7 +19,7 @@ export default function Hero() {
 
         <div className="space-y-2 text-center">
           <h1 className="text-[72px] font-bold">I'm Habeeb Abdullahi.</h1>
-          <h4 className="text-[1.25rem] font-semibold mt-[-20px]">
+          <h4 className="text-size20 font-semibold mt-[-20px]">
             I turn experiences into business success.
           </h4>
           <p className="text-center text-black-300 mt-4 w-[50%] text-base font-medium mx-auto">

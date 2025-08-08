@@ -16,19 +16,19 @@ export default function Work() {
         {/* 🚨 toggle buttons  */}
         <section className="gap-x-4 flex items-center">
           <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-[1.25rem]">All (4)</h1>
+            <h1 className=" w-fit m-auto text-size20">All (4)</h1>
           </div>
 
           <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-[1.25rem]">Branding (4)</h1>
+            <h1 className=" w-fit m-auto text-size20">Branding (4)</h1>
           </div>
 
           <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-[1.25rem]">Mobile App (4)</h1>
+            <h1 className=" w-fit m-auto text-size20">Mobile App (4)</h1>
           </div>
 
           <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-[1.25rem]">Web app (4)</h1>
+            <h1 className=" w-fit m-auto text-size20">Web app (4)</h1>
           </div>
         </section>
         {/*  */}
@@ -43,7 +43,7 @@ export default function Work() {
               <img src={travel} alt="" className="" />
             </div>
           </div>
-          <h4 className="text-[1.25rem] font-semibold">Branding</h4>
+          <h4 className="text-size20 font-semibold">Branding</h4>
         </section>
         <section className="space-y-4 mt-20">
           <div className="w-[450px] h-[450px] rounded-4xl bg-gray-1000">
@@ -51,7 +51,7 @@ export default function Work() {
               <img src={epump} alt="" className="" />
             </div>
           </div>
-          <h4 className="text-[1.25rem] font-semibold">Mobile Applications</h4>
+          <h4 className="text-size20 font-semibold">Mobile Applications</h4>
         </section>
         <section className="space-y-4 mt-[-40px]">
           <div className="w-[450px] h-[450px] rounded-4xl bg-gray-1000">
@@ -59,7 +59,7 @@ export default function Work() {
               <img src={epump} alt="" className="" />
             </div>
           </div>
-          <h4 className="text-[1.25rem] font-semibold">Mobile Applications</h4>
+          <h4 className="text-size20 font-semibold">Mobile Applications</h4>
         </section>
 
         <section className="space-y-4 mt-20">
@@ -68,7 +68,7 @@ export default function Work() {
               <img src={epump} alt="" className="" />
             </div>
           </div>
-          <h4 className="text-[1.25rem] font-semibold">Mobile Applications</h4>
+          <h4 className="text-size20 font-semibold">Mobile Applications</h4>
         </section>
       </section>
     </section>

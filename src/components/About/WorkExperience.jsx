@@ -44,7 +44,7 @@ export default function WorkExperience() {
                   Fuelmetrics Limited
                 </span>
               </h4>
-              <h5 className="text-black-2000 text-[1.25rem]">2022 - Present</h5>
+              <h5 className="text-black-2000 text-size20">2022 - Present</h5>
             </div>
 
             <div className="space-y-4">
@@ -55,7 +55,7 @@ export default function WorkExperience() {
                 </span>{" "}
                 (Contract)
               </h4>
-              <h5 className="text-black-2000 text-[1.25rem]">2025</h5>
+              <h5 className="text-black-2000 text-size20">2025</h5>
             </div>
 
             <div className="space-y-4">
@@ -66,7 +66,7 @@ export default function WorkExperience() {
                 </span>{" "}
                 (Contract){" "}
               </h4>
-              <h5 className="text-black-2000 text-[1.25rem]">2022 - 2023</h5>
+              <h5 className="text-black-2000 text-size20">2022 - 2023</h5>
             </div>
           </section>
         </section>

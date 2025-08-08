@@ -4,6 +4,7 @@ import Home from "@/pages/Home";
 import Masterlayout from "@/components/UI/Masterlayout";
 import Work from "./pages/Work";
 import About from "./pages/About";
+import ProjectDetails from "./pages/ProjectDetails";
 
 function App() {
   const routes = createBrowserRouter([
@@ -21,6 +22,7 @@ function App() {
           element: <Work />,
         },
         { path: "about", element: <About /> },
+         { path: "contact", element: <ProjectDetails/> },
       ],
     },
   ]);

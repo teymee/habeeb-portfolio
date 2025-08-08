@@ -17,39 +17,39 @@ export default function Footer() {
       }`}
     >
       <section className="wrapper bg-black-800 rounded-xl space-y-10 py-10 flex flex-col justify-center">
-        <div className="text-center text-[4.5rem] leading-20 text-white w-full">
+        <div className="text-center   text-white w-full [ lg:text-[72px] text-[40px] ] [ lg:leading-20 leading-13 ]">
           <h1 className="font-thin">Have amazing</h1>
           <h1 className="font-semibold">ideas?</h1>
 
           <Link to="/">
-            <button className="w-fit mx-auto mt-10  border border-white rounded-full flex gap-x-2 px-4 py-4 text-base font-semibold text-white">
+            <button className="w-fit mx-auto    border border-white rounded-full flex gap-x-2 text-base font-semibold text-white [ lg:mt-10 mt-5 ] [ px-4 lg:py-4  py-3 ]">
               <p>See an email</p>
               <img src={arrowUp} alt="" />
             </button>
           </Link>
         </div>
 
-        <div className="border-b border-white-300 h-[100px] overflow-y-hidden">
-          <h1 className="text-center text-[100px] text-white-300 opacity-70 font-semibold ">
+        <div className="border-b border-white-300  overflow-y-hidden  [ lg:h-[100px] h-[37px] ] ">
+          <h1 className="text-center  text-white-300 opacity-70 font-semibold  [ lg:text-[100px] text-[38px] ] ">
             Habeeb Abdullahi.
           </h1>
         </div>
 
-        <section className="w-fit mx-auto text-[32px] text-white font-thin flex items-center gap-x-8">
-          <div className="w-fit px-8 py-4 flex gap-x-2 border rounded-full">
+        <section className="w-fit lg:mx-auto text-[32px] text-white font-thin flex  gap-x-8 [ lg:flex-row flex-col ] [ lg:items-center items-start ] ">
+          <div className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full">
             <img src={insta} alt="" />
             <h1 className="underline ">Instagram</h1>
             <img src={arrowUp} alt="" />
           </div>
 
-           <div className="w-fit px-8 py-4 flex gap-x-2 border rounded-full">
+           <div className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full">
             <img src={twitter} alt="" />
             <h1 className="underline ">X</h1>
             <sup className="text-sm ">(twitter)</sup>
             <img src={arrowUp} alt="" />
           </div>
 
-           <div className="w-fit px-8 py-4 flex gap-x-2 border rounded-full">
+           <div className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full">
             <img src={linkedIn} alt="" className="w-[32px]" />
             <h1 className="underline ">LinkedIn</h1>
             <img src={arrowUp} alt="" />

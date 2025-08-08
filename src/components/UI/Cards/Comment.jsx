@@ -13,10 +13,10 @@ export default function Comment({
   link,
 }) {
   return (
-    <section className=" relative h-[530px] min-w-[423px] rounded-xl bg-black-1000">
+    <section className=" relative  rounded-xl bg-black-1000 [ lg:h-[530px] h-[430px] ]  [ lg:min-w-[423px]  min-w-[350px] ] ">
       <img src={quote} alt="" className="absolute top-10 right-10" />
       <section className=" wrapper pt-20 pb-8 flex flex-col h-full justify-between">
-        <div className="text-black-50 text-base w-10/12 font-medium">
+        <div className="text-black-50  w-10/12 font-medium [ lg:text-base text-sm ]">
           {comment}
         </div>
 

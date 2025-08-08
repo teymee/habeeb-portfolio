@@ -47,22 +47,22 @@ export default function Navbar() {
     },
   ];
   return (
-    <nav className="w-[40%] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
-      <section className="flex justify-between px-8 ">
+    <nav className="[ lg:w-[40%] w-[90%]  ] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
+      <section className="flex justify-between [ lg:px-8 px-4 ] ">
         {navs.map(({ activeIcon, icon, name, link }) => {
           let isActive = pathname === link;
           return (
             <Link to={link} key={name} className="flex-1">
               <div
             //  first:rounded-bl-4xl
-                className={` transition-all duration-150 flex flex-col items-center gap-y-2 font-medium py-6 mb-[-1px]    ${
+                className={` transition-all duration-150 flex flex-col items-center gap-y-2 font-medium mb-[-1px] [ lg:py-6  py-4 ]    ${
                   isActive ? "text-green-100 border-b-4 border-green-100  " : "text-black-200"
 
                 }`}
               >
                 <img src={isActive ? activeIcon : icon} alt={name} />
 
-                <p className="text-sm">{name}</p>
+                <p className="[ lg:text-sm text-[10px] ]">{name}</p>
               </div>
             </Link>
           );

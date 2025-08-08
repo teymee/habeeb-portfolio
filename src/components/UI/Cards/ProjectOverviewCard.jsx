@@ -9,15 +9,15 @@ export default function ProjectOverviewCard({ app, logo, name, desc, tags }) {
       </div>
 
       <div className="flex flex-col text-center justify-center items-center space-y-3 font-medium">
-        <h1 className="text-[1.5rem] font-semibold text-black-400">{name}</h1>
-        <p className="w-1/2 text-base text-white-900 ">{desc}</p>
+        <h1 className=" [ lg:text-[1.5rem] text-base ] font-semibold text-black-400">{name}</h1>
+        <p className=" [ lg:w-1/2 w-[90%]  ] [ lg:text-base text-xs ] text-white-900 ">{desc}</p>
 
-        <div className="flex justify-center gap-x-4 uppercase">
+        <div className="flex justify-center uppercase [ lg:gap-x-4  gap-x-2  ]">
           {tags?.map((tag) => {
             return (
               <p
                 key={tag}
-                className="bg-black text-sm text-white font-medium rounded-full px-4 py-2 w-fit"
+                className="bg-black [ lg:text-sm text-[7px] ] text-white font-medium rounded-full px-4 py-2 w-fit"
               >
                 {tag}
               </p>

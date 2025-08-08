@@ -14,19 +14,19 @@ export default function Hero() {
       {/* 🚨 Hero  */}
       <section className="h-screen items-center w-full bg-cover bg-[url(@/assets/svg/hero-bg.svg)] flex flex-col justify-center space-y-4">
         <div className="flex justify-center">
-          <img src={avatar} alt="" />
+          <img src={avatar} alt="" className="[ lg:w-full w-[4.875rem] ]" />
         </div>
 
-        <div className="space-y-2 text-center">
-          <h1 className="text-[72px] font-bold">I'm Habeeb Abdullahi.</h1>
-          <h4 className="text-size20 font-semibold mt-[-20px]">
-            I turn experiences into business success.
+        <div className="space-y-4 text-center">
+          <h1 className=" [ text-[45px] lg:text-[72px] ] font-medium">
+            Hi, I’m Habeeb
+          </h1>
+          <h4 className="text-size20  mt-[-20px]">
+            A designer who makes ideas click.
           </h4>
-          <p className="text-center text-black-300 mt-4 w-[50%] text-base font-medium mx-auto">
-            With over three years of experience crafting intuitive user
-            interfaces and smooth interactions, I excel at creating user-focused
-            solutions that are not only visually appealing but also function
-            flawlessly.{" "}
+          <p className="text-center text-black-300 mt-4 [ lg:w-[80%] w-[90%] ] text-base font-medium mx-auto">
+            Helping businesses scale with design that speaks clearly, performs
+            effortlessly, and delivers measurable value.
           </p>
         </div>
       </section>
@@ -34,16 +34,14 @@ export default function Hero() {
 
       {/* 🚨 Niche  */}
       <section className="wrapper global-gap space-y-4">
-        <h1 className="text-black-200 text-[2rem] font-semibold">
+        <h1 className="text-black-200 text-[32px] font-semibold [ lg:w-[40%] ] ">
           I’ve been in various{" "}
-          <span className="text-black">
-            niches and <br /> domains, working{" "}
-          </span>
+          <span className="text-black">niches and domains, working </span>
           with design:
         </h1>
 
         {/* 🚨 cards  */}
-        <section className="grid grid-cols-3 gap-x-10 text-black-50 text-base font-medium ">
+        <section className="grid [ lg:grid-cols-3 grid-cols-1 ] [ lg:gap-x-10 gap-y-4  ] text-black-50 text-base font-medium ">
           {/* one  */}
           <div className="bg-black-600 rounded-2xl py-4 px-6 space-y-4">
             <p>
@@ -68,7 +66,6 @@ export default function Hero() {
 
             <div className="flex gap-x-10">
               <img src={media} alt="" />
-
             </div>
           </div>
 

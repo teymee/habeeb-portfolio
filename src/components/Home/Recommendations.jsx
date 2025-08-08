@@ -21,7 +21,7 @@ export default function Recommendations({isRounded = true}) {
     >
       <section className="wrapper space-y-10">
         <div>
-          <h1 className="text-[2.5rem] text-black-500 font-semibold ">
+          <h1 className="text-[2.5rem] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">
             Don’t take my words <br /> for it.
           </h1>
         </div>

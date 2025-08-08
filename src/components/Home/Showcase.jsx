@@ -13,7 +13,7 @@ export default function Showcase() {
   const top = Array(4).fill(obj);
   const bottom = Array(3).fill(obj);
   return (
-    <section className="[ lg:flex hidden ]">
+    <section className="[ lg:block hidden ]">
       {/* 🚨 header  */}
       <section className="wrapper justify-between flex items-center">
         <h1 className="text-[2.5rem] leading-12 font-thin text-black-200">

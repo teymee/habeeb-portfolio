@@ -5,71 +5,85 @@ import React from "react";
 import travel from "@/assets/svg/travel-app.svg";
 import epump from "@/assets/svg/epump-snip.svg";
 
+// 🚨components
+import ProjectCard from "@/components/UI/Cards/ProjectCard";
+
 export default function Work() {
+  const works = [
+    {
+      image: travel,
+      name: "Mobile development",
+    },
+    {
+      image: epump,
+      name: "Mobile development",
+    },
+    {
+      image: travel,
+      name: "Mobile development",
+    },
+    {
+      image: epump,
+      name: "Mobile development",
+    },
+  ];
+
+  const navs = [
+    {
+      name: "All",
+      num: 4,
+    },
+
+    {
+      name: "Branding",
+      num: 4,
+    },
+
+    {
+      name: "Mobile App",
+      num: 4,
+    },
+
+    {
+      name: "Web app",
+      num: 4,
+    },
+  ];
+
   return (
     <section className="wrapper py-10 ">
-      <div className="space-y-10 ">
-        <h1 className="text-[6rem] text-[#333333] leading-24">
-          Creating next level <br /> digital products
+      <div className="[ lg:space-y-10 space-y-4 ] ">
+        <h1 className=" [ lg:text-[6rem] text-[34px] ] [ lg:leading-24 leading-10 ] text-[#333333]   [ lg:w-[70%] w-[90%] ]">
+          Creating next level digital products
         </h1>
 
         {/* 🚨 toggle buttons  */}
-        <section className="gap-x-4 flex items-center">
-          <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-size20">All (4)</h1>
-          </div>
+        <section className="[ lg:gap-x-4 gap-x-1 ] flex items-center">
+          {navs.map(({name, num}) => {
+            return (
+              <div key={name} className=" [ lg:py-4 py-2 ] [ lg:gap-x-2  px-3  ]  [ lg:w-[200px] ] lg:h-[80px] font-light border border-black-200 rounded-full">
+                <h1 className=" flex items-center h-full justify-center  [ lg:text-size20 text-[9px] ]">
+                  {name} ({num})
+                </h1>
+              </div>
+            );
+          })}
 
-          <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-size20">Branding (4)</h1>
-          </div>
-
-          <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-size20">Mobile App (4)</h1>
-          </div>
-
-          <div className=" w-[200px] h-[80px] font-light py-4 flex gap-x-2 border border-black-200 rounded-full">
-            <h1 className=" w-fit m-auto text-size20">Web app (4)</h1>
-          </div>
+        
         </section>
         {/*  */}
       </div>
 
       {/* 🚨 works  */}
 
-      <section className="grid grid-cols-2 w-[80%] mx-auto global-gap">
-        <section className="space-y-4">
-          <div className="w-[450px] h-[450px] rounded-4xl bg-gray-1000">
-            <div className="row-center">
-              <img src={travel} alt="" className="" />
+      <section className="grid [ lg:grid-cols-2 grid-cols-1 ] [ lg:w-[80%] w-[95%] ]  mx-auto global-gap space-y-4">
+        {works?.map((project, index) => {
+          return (
+            <div key={index} className=" even:lg:mt-20 odd:lg:mt-[-40px]">
+              <ProjectCard {...project} />
             </div>
-          </div>
-          <h4 className="text-size20 font-semibold">Branding</h4>
-        </section>
-        <section className="space-y-4 mt-20">
-          <div className="w-[450px] h-[450px] rounded-4xl bg-gray-1000">
-            <div className="row-center">
-              <img src={epump} alt="" className="" />
-            </div>
-          </div>
-          <h4 className="text-size20 font-semibold">Mobile Applications</h4>
-        </section>
-        <section className="space-y-4 mt-[-40px]">
-          <div className="w-[450px] h-[450px] rounded-4xl bg-gray-1000">
-            <div className="row-center">
-              <img src={epump} alt="" className="" />
-            </div>
-          </div>
-          <h4 className="text-size20 font-semibold">Mobile Applications</h4>
-        </section>
-
-        <section className="space-y-4 mt-20">
-          <div className="w-[450px] h-[450px] rounded-4xl bg-gray-1000">
-            <div className="row-center">
-              <img src={epump} alt="" className="" />
-            </div>
-          </div>
-          <h4 className="text-size20 font-semibold">Mobile Applications</h4>
-        </section>
+          );
+        })}
       </section>
     </section>
   );

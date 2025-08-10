@@ -1,7 +1,6 @@
 import React from "react";
 
 // 🚨 assets
-
 import travel from "@/assets/svg/travel-app.svg";
 import epump from "@/assets/svg/epump-snip.svg";
 

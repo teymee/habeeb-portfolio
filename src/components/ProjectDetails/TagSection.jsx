@@ -1,15 +1,15 @@
 import React from "react";
 
-export default function TagSection({ title, subtitle, listArr }) {
+export default function TagSection({ title, subtitle, excerpt, listArr }) {
   const titleWords = title.split(" ");
   const isShort = titleWords.length <= 2;
 
   return (
     <section>
-      <section className="border-b border-b-black-200 pb-10">
-        <div className={`${isShort ? "w-fit" : "w-[50%]"}`}>
+      <section className="border-b border-b-black-200  [ lg:pb-10 pb-8 ] ">
+        <div className={`${isShort ? "w-fit" : "[ lg:w-[50%] w-[70%] ]"}`}>
           <h1
-            className={`text-[96px] leading-24 flex gap-x-4 ${
+            className={` header-style flex gap-x-4 ${
               isShort ? "flex-nowrap   " : "flex-wrap"
             } `}
           >
@@ -23,16 +23,17 @@ export default function TagSection({ title, subtitle, listArr }) {
         </div>
       </section>
 
-      <div className="py-10 flex justify-between">
-        <div className="w-[25%]">
-          <p className="uppercase text-md w-[60%]">{subtitle}</p>
+      <div className="py-10 flex justify-between flex-responsive ">
+        <div className=" [ lg:w-[25%] w-full ] [ lg:font-normal font-semibold ] ">
+          <p className="uppercase text-md  [ lg:w-[60%] w-full ]">{subtitle}</p>
         </div>
 
-        <div className="w-[75%]">
-          <ul className="space-y-4 text-size24">
+        <div className=" [ lg:w-[75%] w-full ] space-y-4 [ lg:text-size24 text-base ] ">
+          <p className="">{excerpt}</p>
+          <ul className=" pl-10 space-y-4">
             {listArr.map((item, index) => {
               return (
-                <li key={index} className="list-disc w-9/12">
+                <li key={index} className="list-disc lg:w-9/12">
                   {item}
                 </li>
               );

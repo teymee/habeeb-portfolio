@@ -8,10 +8,7 @@ export default function ProjectDetails() {
     <section className="space-y-40">
       <ProjectIntro />
       <Tagline/>  
-
       <Snippet/>
-
-
     </section>
   );
 }

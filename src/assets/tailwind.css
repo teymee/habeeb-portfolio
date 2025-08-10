@@ -9,6 +9,7 @@
   /* TEXT SIZE  */
   --text-size20: 1.25rem;
   --text-size24: 1.5rem;
+  --text-size40: 2.5rem;
   --text-size103: 6.4375rem;
 
   /* 🚨COLORS  */
@@ -70,4 +71,11 @@
 
 .global-gap {
   @apply my-20;
+}
+
+.header-style {
+  @apply lg:text-[96px] text-[36px]  lg:leading-24 leading-12;
+}
+.flex-responsive {
+  @apply flex lg:flex-row flex-col gap-y-6;
 }

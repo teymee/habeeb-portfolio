@@ -2,7 +2,7 @@ import React from "react";
 
 // 🚨 assets
 import appAd from "@/assets/svg/app-ad.svg";
-// import app from "@/assets/svg/app-mock.svg";
+import app from "@/assets/svg/app-mock.svg";
 
 export default function ProjectIntro() {
   const desc = [
@@ -21,21 +21,21 @@ export default function ProjectIntro() {
     },
   ];
   return (
-    <section className=" py-10 space-y-20">
-      <section className="wrapper space-y-10">
+    <section className=" lg:py-10 pt-10 space-y-20">
+      <section className="wrapper  [ lg:space-y-10 space-y-4 ]">
         {/* 🚨 name  */}
         <div className="text-black-400 space-y-8">
           <h5 className="text-size20 font-medium">
             Epump Station Companion App
           </h5>
-          <h1 className="text-size103 leading-28">
-            Tank <br />
+          <h1 className="[ lg:text-size103 text-size40 ]    [ w-[30%] lg:leading-28 leading-14 ]">
+            Tank 
             Management
           </h1>
         </div>
 
         {/* 🚨 desc  */}
-        <section className="grid grid-cols-3 gap-x-10 ">
+        <section className="grid lg:grid-cols-3 [ lg:gap-x-10 gap-y-10 ] ">
           {desc.map(({ title, body }, index) => {
             return (
               <section key={index} className="text-base space-y-4">
@@ -55,14 +55,13 @@ export default function ProjectIntro() {
           })}
         </section>
       </section>
-      {/* bg-[url(@/assets/svg/hero-bg.svg)] */}
-      <section className="h-screen w-screen bg-[url(@/assets/svg/app-mock.svg)] object-cover">
-        {/* <img src={app} alt="" className="w-full h-full" /> */}
+      <section className=" [ lg:h-screen h-[60vh] ] w-screen ">
+        <img src={app} alt="" className="w-full h-full" />
       </section>
 
       {/* 🚨 overview  */}
       <section className="wrapper space-y-20">
-        <section className="flex justify-between ">
+        <section className="flex justify-between [ flex-col lg:flex-row  gap-y-4 ] ">
           <h3 className="w-[20%] uppercase">Overview</h3>
 
           <div className="space-y-10">

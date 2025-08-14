@@ -19,22 +19,21 @@ export default function Intro() {
     },
   ];
   return (
-    <section>
+    <section className="space-y-10">
       {/* 🚨 about  */}
       <section className="w-[95%] space-y-10 mx-auto">
-        <div className="space-y-10  text-black-400">
-          <h1 className="text-[6rem]  leading-24">
-            I turn experiences into <br />
-            business success.
+        <div className=" [ lg:space-y-10 space-y-6 ]  text-black-400">
+          <h1 className=" [ lg:text-[6rem] text-[32px] ]  [ lg:leading-24 leading-9 ]  lg:w-10/12">
+            I turn experiences into business success.
           </h1>
 
           <hr />
         </div>
 
-        <section className="flex justify-between ">
-          <section className="w-[40%] text-size20 space-y-10 text-black-400">
+        <section className="flex-responsive justify-between  ">
+          <section className="lg:w-[40%] [ lg:text-size20 text-base ] space-y-10 text-black-400">
             <div className="">
-              I’m habeeb, an experienced product designer who speaks fluent
+              I'm habeeb, an experienced product designer who speaks fluent
               Design and design with business goals at heart . In the last 4
               years, I helped businesses in industries like Fintech, Oil &Gas
               and Artificial intelligence(AI), turn blank pages into bold
@@ -56,24 +55,23 @@ export default function Intro() {
             <div>
               I do always say this to people I work with <br />
               <b>
-                “Great design isn’t just how it looks, it’s how it works, and
+                “Great design isn't just how it looks, it's how it works, and
                 how it makes people feel”.
               </b>
             </div>
           </section>
 
-        
-          <div className="w-[40.3125rem] h-[735px]">
+          <div className="[ lg:w-[40.3125rem] lg:h-[735px] ] ">
             <img src={about} alt="" className="rounded-4xl w-full h-full" />
           </div>
         </section>
       </section>
 
       {/*🚨 my service  */}
-      <section className="space-y-10">
-        <div className="text-[72px]">My superpowers</div>
+      <section className="[ lg:space-y-10 space-y-6 ] ">
+        <div className="  [ lg:text-[4.5rem] text-[32px] ]">My superpowers</div>
 
-        <section className="grid grid-cols-3 gap-x-10 ">
+        <section className="grid lg:grid-cols-3 gap-x-10 gap-y-10 ">
           {services.map(({ title, body }, index) => {
             return (
               <section>
@@ -83,7 +81,7 @@ export default function Intro() {
                   <hr />
                 </div>
                 <div className="mt-4">
-                  <h1 className="text-[1.5rem] font-medium mb-4">{title}</h1>
+                  <h1 className=" [ lg:text-[1.5rem]  text-base ] font-medium mb-4">{title}</h1>
                   <p className="text-black-400 w-[95%]">{body}</p>
                 </div>
               </section>

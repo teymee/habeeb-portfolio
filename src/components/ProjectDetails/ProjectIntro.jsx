@@ -1,23 +1,36 @@
 import React from "react";
 
-// 🚨 assets
-import appAd from "@/assets/svg/app-ad.svg";
-import app from "@/assets/svg/app-mock.svg";
+import { urlFor } from "@/utils";
 
-export default function ProjectIntro() {
+export default function ProjectIntro({ details }) {
+  const {
+    roles,
+    industry,
+    duration,
+    bgImage,
+    overview,
+    overviewThumbnail,
+    overviewLinks,
+  } = details ?? {};
+
+  const { appStore, googlePlay, liveWebsite } = overviewLinks ?? {};
+
+  const appImage = urlFor(bgImage?.asset?._ref);
+  const thumbnail = urlFor(overviewThumbnail?.asset?._ref);
+
   const desc = [
     {
       title: "ROLE / SERVICES",
-      body: ["PRODUCT DESIGNER", "INTERACTION DESIGN"],
+      body: roles,
     },
 
     {
       title: "INDUSTRY",
-      body: ["OIL & GAS", "B2B"],
+      body: industry,
     },
     {
       title: "DURATION",
-      body: ["6 WEEKS"],
+      body: [duration],
     },
   ];
   return (
@@ -29,8 +42,7 @@ export default function ProjectIntro() {
             Epump Station Companion App
           </h5>
           <h1 className="[ lg:text-size103 text-size40 ]    [ w-[30%] lg:leading-28 leading-14 ]">
-            Tank 
-            Management
+            Tank Management
           </h1>
         </div>
 
@@ -56,7 +68,7 @@ export default function ProjectIntro() {
         </section>
       </section>
       <section className=" [ lg:h-screen h-[60vh] ] w-screen ">
-        <img src={app} alt="" className="w-full h-full" />
+        <img src={appImage} alt="" className="w-full h-full" />
       </section>
 
       {/* 🚨 overview  */}
@@ -65,23 +77,35 @@ export default function ProjectIntro() {
           <h3 className="w-[20%] uppercase">Overview</h3>
 
           <div className="space-y-10">
-            <p className="text-black-400 w-[80%]">
-              An application that effortlessly track fuel levels and dispensing
-              operations in real-time, ensure accurate inventory, prevent
-              overflow, and optimize fuel usage all with areliable, easy-to-use
-              system.
-            </p>
+            <p className="text-black-400 w-[80%]">{overview}</p>
 
             <div className="flex gap-x-10 items-center">
-              <p className="underline underline-offset-8">Live website</p>
-              <p className="underline underline-offset-8">App store</p>
-              <p className="underline underline-offset-8">Google play</p>
+              {liveWebsite && (
+                <a href={liveWebsite}>
+                  {" "}
+                  <p className="underline underline-offset-8">Live website</p>
+                </a>
+              )}
+
+              {appStore && (
+                <a href={appStore}>
+                  {" "}
+                  <p className="underline underline-offset-8">App store</p>
+                </a>
+              )}
+
+              {googlePlay && (
+                <a href={googlePlay}>
+                  {" "}
+                  <p className="underline underline-offset-8">Google play</p>
+                </a>
+              )}
             </div>
           </div>
         </section>
 
         <div className="w-[80%] rounded-t-2xl mx-auto">
-            <img src={appAd} alt="" />
+          <img src={thumbnail} alt="" />
         </div>
       </section>
     </section>

@@ -1,31 +1,37 @@
-import React from "react";
-
-// 🚨 assets
-import travel from "@/assets/svg/travel-app.svg";
-import epump from "@/assets/svg/epump-snip.svg";
+import React, { useEffect, useState } from "react";
 
 // 🚨components
 import ProjectCard from "@/components/UI/Cards/ProjectCard";
+import { sanityClient } from "@/sanity/client";
+import { Link } from "react-router-dom";
 
 export default function Work() {
-  const works = [
-    {
-      image: travel,
-      name: "Mobile development",
-    },
-    {
-      image: epump,
-      name: "Mobile development",
-    },
-    {
-      image: travel,
-      name: "Mobile development",
-    },
-    {
-      image: epump,
-      name: "Mobile development",
-    },
-  ];
+  const [works, setWorks] = useState([]);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(`*[_type == "projects"]{name, category, imagePreview,_id}`)
+      .then((data) => setWorks(data))
+      .catch(console.error);
+  }, []);
+  // const works = [
+  //   {
+  //     image: travel,
+  //     name: "Mobile development",
+  //   },
+  //   {
+  //     image: epump,
+  //     name: "Mobile development",
+  //   },
+  //   {
+  //     image: travel,
+  //     name: "Mobile development",
+  //   },
+  //   {
+  //     image: epump,
+  //     name: "Mobile development",
+  //   },
+  // ];
 
   const navs = [
     {
@@ -58,17 +64,18 @@ export default function Work() {
 
         {/* 🚨 toggle buttons  */}
         <section className="[ lg:gap-x-4 gap-x-1 ] flex items-center">
-          {navs.map(({name, num}) => {
+          {navs.map(({ name, num }) => {
             return (
-              <div key={name} className=" [ lg:py-4 py-2 ] [ lg:gap-x-2  px-3  ]  [ lg:w-[200px] ] lg:h-[80px] font-light border border-black-200 rounded-full">
+              <div
+                key={name}
+                className=" [ lg:py-4 py-2 ] [ lg:gap-x-2  px-3  ]  [ lg:w-[200px] ] lg:h-[80px] font-light border border-black-200 rounded-full"
+              >
                 <h1 className=" flex items-center h-full justify-center  [ lg:text-size20 text-[9px] ]">
                   {name} ({num})
                 </h1>
               </div>
             );
           })}
-
-        
         </section>
         {/*  */}
       </div>
@@ -79,7 +86,9 @@ export default function Work() {
         {works?.map((project, index) => {
           return (
             <div key={index} className=" even:lg:mt-20 odd:lg:mt-[-40px]">
-              <ProjectCard {...project} />
+              <Link to={`/project-details/${project?._id}`}>
+                <ProjectCard {...project} />
+              </Link>
             </div>
           );
         })}

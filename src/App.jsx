@@ -22,7 +22,8 @@ function App() {
           element: <Work />,
         },
         { path: "about", element: <About /> },
-         { path: "contact", element: <ProjectDetails/> },
+        { path: "/project-details/:id", element: <ProjectDetails /> },
+        { path: "contact", element: <ProjectDetails /> },
       ],
     },
   ]);

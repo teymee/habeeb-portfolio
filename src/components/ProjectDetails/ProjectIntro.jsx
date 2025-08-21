@@ -4,6 +4,8 @@ import { urlFor } from "@/utils";
 
 export default function ProjectIntro({ details }) {
   const {
+    name,
+    tag,
     roles,
     industry,
     duration,
@@ -39,10 +41,10 @@ export default function ProjectIntro({ details }) {
         {/* 🚨 name  */}
         <div className="text-black-400 space-y-8">
           <h5 className="text-size20 font-medium">
-            Epump Station Companion App
+            {tag}
           </h5>
           <h1 className="[ lg:text-size103 text-size40 ]    [ w-[30%] lg:leading-28 leading-14 ]">
-            Tank Management
+           {name}
           </h1>
         </div>
 
@@ -81,21 +83,21 @@ export default function ProjectIntro({ details }) {
 
             <div className="flex gap-x-10 items-center">
               {liveWebsite && (
-                <a href={liveWebsite}>
+                <a href={liveWebsite} target="_blank">
                   {" "}
                   <p className="underline underline-offset-8">Live website</p>
                 </a>
               )}
 
               {appStore && (
-                <a href={appStore}>
+                <a href={appStore} target="_blank">
                   {" "}
                   <p className="underline underline-offset-8">App store</p>
                 </a>
               )}
 
               {googlePlay && (
-                <a href={googlePlay}>
+                <a href={googlePlay} target="_blank">
                   {" "}
                   <p className="underline underline-offset-8">Google play</p>
                 </a>

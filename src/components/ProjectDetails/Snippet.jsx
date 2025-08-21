@@ -8,7 +8,6 @@ export default function Snippet({ details }) {
   const prototypeImage = urlFor(prototype?.asset?._ref);
 
   const videoId = testimonial.split("v=")[1]?.split("&")[0];
-  console.log(videoId, "jjjj");
   return (
     <section className="space-y-10">
       <section className="wrapper space-y-10">
@@ -20,8 +19,8 @@ export default function Snippet({ details }) {
 
         {/* 🚨 prototype  */}
 
-        <section className="w-full">
-          <img src={prototypeImage} alt="" className="w-full" />
+        <section className="w-full ">
+          <img src={prototypeImage} alt="" className="w-full h-[800px]" />
         </section>
       </section>
 

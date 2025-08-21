@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
 // 🚨components
 import ProjectCard from "@/components/UI/Cards/ProjectCard";
 import { sanityClient } from "@/sanity/client";
 import { Link } from "react-router-dom";
+import { ProjectContext } from "@/context/ProjectContext";
 
 export default function Work() {
-  const [works, setWorks] = useState([]);
+  const { projects, fetchProject } = useContext(ProjectContext);
 
   useEffect(() => {
-    sanityClient
-      .fetch(`*[_type == "projects"]{name, category, imagePreview,_id}`)
-      .then((data) => setWorks(data))
-      .catch(console.error);
+    fetchProject();
   }, []);
-  // const works = [
-  //   {
-  //     image: travel,
-  //     name: "Mobile development",
-  //   },
-  //   {
-  //     image: epump,
-  //     name: "Mobile development",
-  //   },
-  //   {
-  //     image: travel,
-  //     name: "Mobile development",
-  //   },
-  //   {
-  //     image: epump,
-  //     name: "Mobile development",
-  //   },
-  // ];
+
 
   const navs = [
     {
@@ -83,7 +64,7 @@ export default function Work() {
       {/* 🚨 works  */}
 
       <section className="grid [ lg:grid-cols-2 grid-cols-1 ] [ lg:w-[80%] w-[95%] ]  mx-auto global-gap space-y-4">
-        {works?.map((project, index) => {
+        {projects?.map((project, index) => {
           return (
             <div key={index} className=" even:lg:mt-20 odd:lg:mt-[-40px]">
               <Link to={`/project-details/${project?._id}`}>

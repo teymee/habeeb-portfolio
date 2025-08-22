@@ -15,7 +15,7 @@ export default defineConfig({
   },
   // vercel nagivation 
   build: {
-    outDir: "dist",
+    outDir: "dist" ,
   },
   server: {
     historyApiFallback: true,

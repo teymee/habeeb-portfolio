@@ -27,7 +27,7 @@ export default function Navbar() {
       activeIcon: aWork,
       icon: work,
       name: "Work",
-      link: "/work",
+      link: "/works",
     },
     {
       activeIcon: aAbout,

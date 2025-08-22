@@ -27,7 +27,7 @@ export default function Projects() {
           <span className="font-bold"> Projects </span>
         </h1>
 
-        <Link to="/">
+        <Link to="/works">
           <button className="w-fit border border-black-300 rounded-full flex gap-x-2 px-4 py-4 [ lg:text-base text-sm ] font-semibold text-black-300">
             <p>See all projects</p>
             <img src={arrowUp} alt="" />

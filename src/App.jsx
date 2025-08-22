@@ -18,7 +18,7 @@ function App() {
         },
 
         {
-          path: "work",
+          path: "works",
           element: <Work />,
         },
         { path: "about", element: <About /> },

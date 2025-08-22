@@ -9,7 +9,7 @@ import linkedIn from "@/assets/svg/linkedIn.svg";
 export default function Footer() {
   const { pathname } = useLocation();
 
-  const applyRadius =pathname !== "/" || pathname !== "/about"
+  const applyRadius = pathname !== "/" || pathname !== "/about";
   return (
     <section
       className={`bg-black-700  py-20 bg-[url(@/assets/svg/noise.svg)] ${
@@ -36,24 +36,36 @@ export default function Footer() {
         </div>
 
         <section className="w-fit lg:mx-auto text-[32px] text-white font-thin flex  gap-x-8 [ lg:flex-row flex-col ] [ lg:items-center items-start ] ">
-          <div className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full">
+          <a
+            href="https://www.instagram.com/made.by.habscreative/"
+            target="_blank"
+            className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full"
+          >
             <img src={insta} alt="" />
             <h1 className="underline ">Instagram</h1>
             <img src={arrowUp} alt="" />
-          </div>
+          </a>
 
-           <div className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full">
+          <a
+            href="https://x.com/habib_oluwaseun"
+            target="_blank"
+            className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full"
+          >
             <img src={twitter} alt="" />
             <h1 className="underline ">X</h1>
             <sup className="text-sm ">(twitter)</sup>
             <img src={arrowUp} alt="" />
-          </div>
+          </a>
 
-           <div className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full">
+          <a
+            href="https://www.linkedin.com/in/habeeb-abdullahi/"
+            target="_blank"
+            className="w-fit px-8 py-4 flex gap-x-2 lg:border rounded-full"
+          >
             <img src={linkedIn} alt="" className="w-[32px]" />
             <h1 className="underline ">LinkedIn</h1>
             <img src={arrowUp} alt="" />
-          </div>
+          </a>
         </section>
       </section>
     </section>

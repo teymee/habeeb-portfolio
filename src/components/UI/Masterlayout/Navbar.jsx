@@ -8,6 +8,8 @@ import cv from "@/assets/svg/inactive-cv.svg";
 import about from "@/assets/svg/inactive-about.svg";
 
 import aWork from "@/assets/svg/active-work.svg";
+import aContact from "@/assets/svg/active-contact.svg";
+import aAbout from "@/assets/svg/active-about.svg";
 import home from "@/assets/svg/inactive-home.svg";
 import aHome from "@/assets/svg/active-home.svg";
 
@@ -28,7 +30,7 @@ export default function Navbar() {
       link: "/work",
     },
     {
-      activeIcon: about,
+      activeIcon: aAbout,
       icon: about,
       name: "About",
       link: "/about",
@@ -40,7 +42,7 @@ export default function Navbar() {
       link: "/cv",
     },
     {
-      activeIcon: contact,
+      activeIcon: aContact,
       icon: contact,
       name: "Contact",
       link: "/contact",

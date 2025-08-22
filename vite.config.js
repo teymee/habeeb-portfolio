@@ -13,5 +13,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
- 
+  // vercel nagivation 
+  build: {
+    outDir: "dist",
+  },
+  server: {
+    historyApiFallback: true,
+  },
 });

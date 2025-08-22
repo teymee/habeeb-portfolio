@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 
 // 🚨components
 import ProjectCard from "@/components/UI/Cards/ProjectCard";
@@ -10,54 +10,50 @@ export default function Work() {
   const { projects, fetchProject, isLoading } = useContext(ProjectContext);
 
   const [tab, setTab] = useState("all");
-  const [works, setWorks] = useState([]);
 
   useEffect(() => {
     fetchProject();
-  }, [tab]);
+  }, []);
 
-  useEffect(() => {
-    if (projects) {
-      let filteredWork =
-        tab === "all"
-          ? projects
-          : projects.filter((item) => item?.category?.toLowerCase() === tab);
+  const works = useMemo(() => {
+    if (!projects) return [];
+    if (tab === "all") return projects;
+    return projects.filter((item) => item?.category?.toLowerCase() === tab);
+  }, [projects, tab]);
 
-      setWorks(filteredWork);
-    }
-  }, [tab, projects]);
+  const navs = useMemo(() => {
+    const getNavCount = (nav) => {
+      return projects
+        ? projects.filter((item) => item?.category?.toLowerCase() === nav)
+            ?.length
+        : 0;
+    };
+    return [
+      {
+        name: "All",
+        value: "all",
+        num: projects?.length ?? 0,
+      },
 
-  const getNavCount = (nav) => {
-    return projects
-      ? projects.filter((item) => item?.category?.toLowerCase() === nav)?.length
-      : 0;
-  };
+      {
+        name: "Branding",
+        value: "branding",
+        num: getNavCount("branding"),
+      },
 
-  const navs = [
-    {
-      name: "All",
-      value: "all",
-      num: projects?.length ?? 0,
-    },
+      {
+        name: "Mobile App",
+        value: "mobile",
+        num: getNavCount("mobile"),
+      },
 
-    {
-      name: "Branding",
-      value: "branding",
-      num: getNavCount("branding"),
-    },
-
-    {
-      name: "Mobile App",
-      value: "mobile",
-      num: getNavCount("mobile"),
-    },
-
-    {
-      name: "Web app",
-      value: "web",
-      num: getNavCount("web"),
-    },
-  ];
+      {
+        name: "Web app",
+        value: "web",
+        num: getNavCount("web"),
+      },
+    ];
+  }, [projects]);
 
   return (
     <section className="wrapper py-10 [ lg:space-y-10 space-y-4 ] ">

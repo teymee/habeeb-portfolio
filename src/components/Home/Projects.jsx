@@ -1,23 +1,39 @@
-import React from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 
 // 🚨 assets
 import arrowUp from "@/assets/svg/arrow-up.svg";
-import epumpApp from "@/assets/svg/epump-app.svg";
-import epump from "@/assets/svg/epump.svg";
 
-// 🚨components 
+// 🚨components
 
 import ProjectOverviewCard from "../UI/Cards/ProjectOverviewCard";
+import { ProjectContext } from "@/context/ProjectContext";
+import { urlFor } from "@/utils";
 
 export default function Projects() {
-  const details = {
-    app: epumpApp,
-    logo: epump,
-    name: " Epump Station Companion App",
-    desc: " An App that gives you realtime tank inventory view and control of your filling station stock from the comfort of your phone. Get sales report etc.",
-    tags: ["STATION AUTOMATION", "Saas", "   OIL & GAS SECTOR"],
-  };
+  const { fetchProject, projects, isLoading } = useContext(ProjectContext);
+
+  useEffect(() => {
+    fetchProject();
+  }, []);
+
+  const details = useMemo(() => {
+    if (!projects) null;
+    if (projects) {
+      const randomProject = Math.floor(Math.random() * projects.length );
+ 
+      const { appLock, tag, overview, industry, imagePreview } =
+        projects[randomProject];
+
+      return {
+        app: urlFor(imagePreview?.asset?._ref),
+        logo: appLock,
+        name: tag,
+        desc: overview,
+        tags: industry,
+      };
+    }
+  }, [projects]);
   return (
     <section className="wrapper global-gap space-y-10">
       {/* 🚨 header  */}
@@ -37,7 +53,7 @@ export default function Projects() {
 
       {/* 🚨 Project  */}
 
-      <ProjectOverviewCard {...details} />
+      {!isLoading && <ProjectOverviewCard {...details} />}
 
       {/*  */}
     </section>

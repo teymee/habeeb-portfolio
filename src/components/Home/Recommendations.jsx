@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // 🚨 assets
-import avatar from "@/assets/svg/olaitan.svg";
 import Comment from "../UI/Cards/Comment";
-export default function Recommendations({isRounded = true}) {
-  const obj = {
-    avatar,
-    comment:
-      "Working with Habeeb Abdullahi over the past three years has been truly Amazing. As a UI/UX designer, he consistently brings clarity, creativity, and purpose to every project. His design approach is thoughtful and user-centered, always keeping the bigger picture in mind.",
-    name: "Akinlade Olaitan",
-    company: "Fuelmetrics Inc",
-    position: "Lead Product Designer",
-  };
-  const comments = Array(4).fill(obj);
+import { sanityClient } from "@/sanity/client";
+
+export default function Recommendations({ isRounded = true }) {
+  const [comments, setComments] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(`*[_type == 'recommendation']`)
+      .then((data) => setComments(data))
+      .catch((error) => setError(error))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+
+
   return (
     <section
       className={`bg-black-700 py-20 bg-[url(@/assets/svg/noise.svg)] ${
         isRounded ? "rounded-t-2xl " : undefined
       }`}
     >
+      {error}
       <section className="wrapper space-y-10">
         <div>
           <h1 className="text-[2.5rem] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">
@@ -27,8 +34,8 @@ export default function Recommendations({isRounded = true}) {
         </div>
 
         <section className="overflow-x-scroll hide-scrollbar flex items-center gap-x-8 ">
-          {comments?.map((comment) => {
-            return <Comment {...comment} />;
+          {!isLoading && comments?.map((comment, index) => {
+            return <Comment {...comment} key={index} />;
           })}
         </section>
       </section>

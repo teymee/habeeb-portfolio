@@ -2,7 +2,11 @@ import React from "react";
 
 import { urlFor } from "@/utils";
 
+import leftArrow from "@/assets/svg/left-arrow.svg";
+import { useNavigate } from "react-router-dom";
+
 export default function ProjectIntro({ details }) {
+  const navigate = useNavigate();
   const {
     name,
     tag,
@@ -13,6 +17,7 @@ export default function ProjectIntro({ details }) {
     overview,
     overviewThumbnail,
     overviewLinks,
+    client,
   } = details ?? {};
 
   const { appStore, googlePlay, liveWebsite } = overviewLinks ?? {};
@@ -24,6 +29,11 @@ export default function ProjectIntro({ details }) {
     {
       title: "ROLE / SERVICES",
       body: roles,
+    },
+
+    {
+      title: "CLIENT",
+      body: client,
     },
 
     {
@@ -40,16 +50,22 @@ export default function ProjectIntro({ details }) {
       <section className="wrapper  [ lg:space-y-10 space-y-4 ]">
         {/* 🚨 name  */}
         <div className="text-black-400 space-y-8">
-          <h5 className="text-size20 font-medium">
-            {tag}
-          </h5>
+          <div
+            onClick={() => navigate(-1)}
+            className="flex gap-x-2 cursor-pointer"
+          >
+            <img src={leftArrow} alt="go back" />
+            <p>Back</p>
+          </div>
+
+          <h5 className="text-size20 font-medium">{tag}</h5>
           <h1 className="[ lg:text-size103 text-size40 ]    [ w-[30%] lg:leading-28 leading-14 ]">
-           {name}
+            {name}
           </h1>
         </div>
 
         {/* 🚨 desc  */}
-        <section className="grid lg:grid-cols-3 [ lg:gap-x-10 gap-y-10 ] ">
+        <section className="grid lg:grid-cols-4 [ lg:gap-x-10 gap-y-10 ] ">
           {desc.map(({ title, body }, index) => {
             return (
               <section key={index} className="text-base space-y-4">
@@ -60,8 +76,8 @@ export default function ProjectIntro({ details }) {
                 </div>
 
                 <div className="space-y-4 font-medium">
-                  {body.map((item) => {
-                    return <h4>{item}</h4>;
+                  {body.map((item, index) => {
+                    return <h4 key={index}>{item}</h4>;
                   })}
                 </div>
               </section>
@@ -70,7 +86,7 @@ export default function ProjectIntro({ details }) {
         </section>
       </section>
       <section className=" [ lg:h-screen h-[60vh] ] w-screen ">
-        <img src={appImage} alt="" className="w-full h-full" />
+        <img src={appImage} alt="" className="w-full h-full object-cover" />
       </section>
 
       {/* 🚨 overview  */}

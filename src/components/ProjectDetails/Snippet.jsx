@@ -20,7 +20,7 @@ export default function Snippet({ details }) {
         {/* 🚨 prototype  */}
 
         <section className="w-full ">
-          <img src={prototypeImage} alt="" className="w-full h-[800px]" />
+          <img src={prototypeImage} alt="" className="w-full h-[800px] object-cover" />
         </section>
       </section>
 

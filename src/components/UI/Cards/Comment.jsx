@@ -2,6 +2,7 @@ import React from "react";
 
 import quote from "@/assets/svg/quote.svg";
 import linkedIn from "@/assets/svg/linkedIn.svg";
+import arrow from "@/assets/svg/white-arrow.svg"
 import { urlFor } from "@/utils";
 
 export default function Comment({
@@ -38,8 +39,9 @@ export default function Comment({
             </div>
           </div>
 
-          <a href={link} target="_blank" >
+          <a href={link} target="_blank" className="flex items-center gap-x-1" >
             <img src={linkedIn} alt="open in linkedin " className="w-6" />
+            <img src={arrow} alt="open in linkedin " className="w-6" />
           </a>
         </section>
       </section>

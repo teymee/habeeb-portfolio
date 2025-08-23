@@ -4,9 +4,8 @@ import TagSection from "./TagSection";
 // 🚨components=
 // import ProjectSnippet from "@/components/UI/Cards/ProjectSnippet";
 
-
 export default function Tagline({ details }) {
-  const { problems, goals, target, role} = details ?? {};
+  const { problems, goals, target, role } = details ?? {};
 
   const problemsObj = {
     title: "Problems and pain points",
@@ -43,6 +42,8 @@ export default function Tagline({ details }) {
         <TagSection {...goalsObj} />
         <TagSection {...targetObj} />
         <TagSection {...roleObj} />
+
+        
       </section>
     </section>
   );

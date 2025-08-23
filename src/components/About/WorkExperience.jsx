@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // 🚨 assets
-import star from "@/assets/svg/star.svg";
-import figma from "@/assets/svg/figma.svg";
+// import star from "@/assets/svg/star.svg";
+// import figma from "@/assets/svg/figma.svg";
+import { sanityClient } from "@/sanity/client";
+import { urlFor } from "@/utils";
 
 export default function WorkExperience() {
-  const skills = [
-    "Design Thinking",
-    "User Research",
-    "User Interface Design",
-    "Product Design",
-    "Graphic Design",
-    "Package Design",
-    "No-code Dev",
-    "Prototyping",
-    "Printing",
-    "Social media management",
-  ];
+  const [experiences, setExperiences] = useState(null);
+  const [skills, setSkills] = useState(null);
 
-  const obj = {
-    img: figma,
-    name: "Figma",
-  };
+  const [tools, setTools] = useState(null);
 
-  const tools = Array(4).fill(obj);
+  useEffect(() => {
+    const query = `{
+    "experiences": *[_type == "experienceType"],
+    "skills": *[_type == "mySkills"],
+    "tools": *[_type == "myTools"]
+    }`;
+
+    sanityClient
+      .fetch(query)
+      .then((data) => {
+        setExperiences(data?.experiences);
+        setSkills(data?.skills?.[0]?.skills);
+        setTools(data?.tools?.[0]?.tools);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <section className={`bg-black-700  py-10`}>
-      <section className="wrapper bg-black-800 rounded-xl px-8 py-10 space-y-10">
+      <section className="wrapper bg-black-800 rounded-xl px-8 py-10 space-y-20">
         {/* 🚨 Experience  */}
         <section className="space-y-6">
           <h1 className=" [ lg:text-[54px] text-[2.5rem] ] text-white">
@@ -34,38 +39,39 @@ export default function WorkExperience() {
             <span className="font-thin">Work </span>Experience{" "}
           </h1>
 
-          <section className="space-y-6">
-            <div className="space-y-4">
-              <h4 className="text-green-100 font-light [ lg:text-[1.5rem] text-size20 ]">
-                Product Designer at{" "}
-                <span className="font-medium underline underline-offset-2">
-                  Fuelmetrics Limited
-                </span>
-              </h4>
-              <h5 className="text-black-2000 text-size20">2022 - Present</h5>
-            </div>
+          <section className="space-y-6 mt-10">
+            {experiences &&
+              experiences?.map(({ timeline, companyDetails, description }) => {
+                const { name, location, role, link } = companyDetails ?? {};
+                return (
+                  <section
+                    key={name}
+                    className="flex [ lg:flex-row flex-col ] pt-8 [ lg:gap-y-0 gap-y-10 ] justify-between border-b border-white/8 pb-18 px-4 text-white"
+                  >
+                    <div>
+                      <p className="text-2xl">{timeline}</p>
+                    </div>
 
-            <div className="space-y-4">
-              <h4 className="text-green-100 font-light [ lg:text-[1.5rem] text-size20 ]">
-                Senior product designer at{" "}
-                <span className="font-medium underline underline-offset-2">
-                  Veda AI{" "}
-                </span>{" "}
-                (Contract)
-              </h4>
-              <h5 className="text-black-2000 text-size20">2025</h5>
-            </div>
+                    <div className="">
+                      <a
+                        href={link}
+                        className="font-medium underline underline-offset-10 text-2xl"
+                      >
+                        {name}
+                      </a>
 
-            <div className="space-y-4">
-              <h4 className="text-green-100 font-light [ lg:text-[1.5rem] text-size20 ]">
-                Product designer at{" "}
-                <span className="font-medium underline underline-offset-2">
-                  IFING MEDIA
-                </span>{" "}
-                (Contract){" "}
-              </h4>
-              <h5 className="text-black-2000 text-size20">2022 - 2023</h5>
-            </div>
+                      <div className="text-white/50">
+                        <p className="text-sm my-4">{location}</p>
+                        <p>{role}</p>
+                      </div>
+                    </div>
+
+                    <div className="lg:w-[30%]">
+                      <p className="text-base">{description}</p>
+                    </div>
+                  </section>
+                );
+              })}
           </section>
         </section>
 
@@ -76,35 +82,23 @@ export default function WorkExperience() {
             <span className="font-thin">My </span> Skill sets
           </h1>
           <section className="[ lg:space-y-16 space-y-6 ]">
-            {Array.from(
-              { length: Math.ceil(skills.length / 3) },
-              (_, i) => i * 3
-            ).map((startIndex, rowIndex) => (
-              <div key={startIndex} className="flex-responsive gap-x-8">
-                {skills
-                  .slice(startIndex, startIndex + 3)
-                  .map((skill, index) => (
-                    <div
-                      key={skill}
-                      className={`flex gap-x-4 items-center bg-black-400 rounded py-4 px-6 font-Manrope ${
-                        index === 0 &&
-                        rowIndex !== Math.ceil(skills.length / 3) - 1
-                          ? "lg:w-[350px] w-fit"
-                          : "w-fit"
-                      }`}
-                    >
-                      <img
-                        src={star}
-                        alt={skill}
-                        className="w-[2rem] h-[2rem]"
-                      />
-                      <h1 className="text-white [ lg:text-[30px] text-base ] font-semibold">
-                        {skill}
-                      </h1>
-                    </div>
-                  ))}
-              </div>
-            ))}
+            <div className="flex-responsive flex-wrap gap-x-8">
+              {skills?.map((skill) => (
+                <section className="" key={skill}>
+                  <div className="w-[80%] h-[1px] border-linear mx-auto mb-[-0.2px]"></div>
+
+                  <div
+                    key={skill}
+                    className={` skill-bg flex gap-x-4 items-center rounded-2xl border border-[#ffffff10]  py-4 px-6 font-Manrope `}
+                  >
+                    <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+                    <h1 className="text-white [ lg:text-[24px] text-base ] font-semibold">
+                      {skill}
+                    </h1>
+                  </div>
+                </section>
+              ))}
+            </div>
           </section>
         </section>
 
@@ -117,24 +111,58 @@ export default function WorkExperience() {
           </h1>
 
           <section className="lg:bg-black-3000 lg:h-[100px] flex-responsive gap-x-4 justify-between">
-            {tools.map(({ img, name }, index) => {
-              return (
-                <>
+            {tools &&
+              tools?.map(({ image, name }, index) => {
+                const img = urlFor(image?.asset?._ref);
+                return (
                   <div
                     key={index}
                     className="flex gap-x-2 items-center [ lg:text-[2.125rem] text-base ] text-white [ lg:bg-transparent bg-black-400 rounded py-4 px-6 ] w-[80%]"
                   >
-                    <img src={img} alt="" className="[ lg:w-[50px] w-[32px] ]" />
+                    <img
+                      src={img}
+                      alt=""
+                      className="[ lg:w-[50px] w-[32px] ]"
+                    />
                     <p>{name}</p>
                   </div>
-
-                  
-                </>
-              );
-            })}
+                );
+              })}
           </section>
         </section>
       </section>
     </section>
   );
 }
+
+//  <section className="[ lg:space-y-16 space-y-6 ]">
+//         {Array.from(
+//           { length: Math.ceil(skills.length / 3) },
+//           (_, i) => i * 3
+//         ).map((startIndex, rowIndex) => (
+//           <div key={startIndex} className="flex-responsive gap-x-8">
+//             {skills
+//               .slice(startIndex, startIndex + 3)
+//               .map((skill, index) => (
+//                 <section className="">
+//                   <div className="w-[80%] h-[1px] border-linear mx-auto"></div>
+
+//                   <div
+//                     key={skill}
+//                     className={` skill-bg flex gap-x-4 items-center rounded-2xl border border-[#ffffff10]  py-4 px-6 font-Manrope ${
+//                       index === 0 &&
+//                       rowIndex !== Math.ceil(skills.length / 3) - 1
+//                         ? "lg:w-[350px] w-fit"
+//                         : "w-fit"
+//                     }`}
+//                   >
+//                     <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+//                     <h1 className="text-white [ lg:text-[24px] text-base ] font-semibold">
+//                       {skill}
+//                     </h1>
+//                   </div>
+//                 </section>
+//               ))}
+//           </div>
+//         ))}
+//       </section>

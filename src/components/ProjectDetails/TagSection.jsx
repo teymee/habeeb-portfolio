@@ -16,7 +16,7 @@ export default function TagSection({ title, subtitle, excerpt, listArr }) {
             {titleWords.map((word) => {
               const isConjuction = word.includes("and") || word.includes("or");
               return (
-                <span className={`${isConjuction && "font-thin"}`}>{word}</span>
+                <span key={word} className={`${isConjuction && "font-thin"}`}>{word}</span>
               );
             })}
           </h1>
@@ -24,16 +24,19 @@ export default function TagSection({ title, subtitle, excerpt, listArr }) {
       </section>
 
       <div className="py-10 flex justify-between flex-responsive ">
-        <div className=" [ lg:w-[25%] w-full ] [ lg:font-normal font-semibold ] ">
+        <div className=" [ lg:w-[25%] w-full ] [ lg:font-medium font-semibold ] ">
           <p className="uppercase text-md  [ lg:w-[60%] w-full ]">{subtitle}</p>
         </div>
 
         <div className=" [ lg:w-[75%] w-full ] space-y-4 [ lg:text-size24 text-base ] ">
           <p className="">{excerpt}</p>
-          <ul className=" pl-10 space-y-4">
+          <ul className=" pl-10 space-y-4 ">
             {listArr.map((item, index) => {
               return (
-                <li key={index} className="list-disc lg:w-9/12">
+                <li
+                  key={index}
+                  className="list-disc !font-light text-xl lg:w-9/12"
+                >
                   {item}
                 </li>
               );

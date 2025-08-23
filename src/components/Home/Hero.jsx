@@ -7,6 +7,9 @@ import tracker from "@/assets/svg/tracker.svg";
 import epump from "@/assets/svg/epump.svg";
 import media from "@/assets/svg/media.svg";
 import veda from "@/assets/svg/veda.svg";
+import ap from "@/assets/svg/ardova.svg"
+import cloud from "@/assets/svg/cloud.svg"
+import print from "@/assets/svg/print.svg"
 
 export default function Hero() {
   return (
@@ -50,6 +53,8 @@ export default function Hero() {
             </p>
 
             <div className="flex gap-x-10">
+              
+              <img src={ap} alt="" />
               <img src={fm} alt="" />
               <img src={tracker} alt="" />
 
@@ -66,6 +71,8 @@ export default function Hero() {
 
             <div className="flex gap-x-10">
               <img src={media} alt="" />
+              <img src={cloud} alt="" />
+              <img src={print} alt="" />
             </div>
           </div>
 

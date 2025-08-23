@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // 🚨 assets
 import about from "@/assets/svg/about-img.svg";
+import arrow from "@/assets/svg/left-arrow.svg";
+import { sanityClient } from "@/sanity/client";
+import { Link } from "react-router-dom";
 
 export default function Intro() {
-  const services = [
-    {
-      title: "Brand & graphics design",
-      body: "With over three years of experience crafting intuitive user interfaces and smooth interactions, I excel at creating user-focused solutions that are not only visually",
-    },
-    {
-      title: "Brand & graphics design",
-      body: "With over three years of experience crafting intuitive user interfaces and smooth interactions, I excel at creating user-focused solutions that are not only visually",
-    },
-    {
-      title: "Brand & graphics design",
-      body: "With over three years of experience crafting intuitive user interfaces and smooth interactions, I excel at creating user-focused solutions that are not only visually",
-    },
-  ];
+  const [services, setServices] = useState(null);
+
+  useEffect(() => {
+    const query = `*[_type == "superPowers"]`;
+
+    sanityClient
+      .fetch(query)
+      .then((data) => setServices(data))
+      .catch(console.error);
+  }, []);
+
+
   return (
     <section className="space-y-10">
       {/* 🚨 about  */}
@@ -62,31 +63,58 @@ export default function Intro() {
           </section>
 
           <div className="[ lg:w-[40.3125rem] lg:h-[735px] ] ">
-            <img src={about} alt="" className="rounded-4xl w-full h-full" />
+            <div className=" lg:h-[500px]  w-full">
+              <img
+                src={about}
+                alt=""
+                className="rounded-4xl w-full  h-full object-cover"
+              />
+            </div>
+            <section className="grid grid-cols-3 gap-x-4 mt-4 h-[20%]">
+              <img src={about} alt="" className="rounded-xl w-full  " />
+
+              <img src={about} alt="" className="rounded-xl w-full  " />
+
+              <img src={about} alt="" className="rounded-xl w-full" />
+            </section>
           </div>
         </section>
       </section>
 
       {/*🚨 my service  */}
-      <section className="[ lg:space-y-10 space-y-6 ] ">
+      <section className="[ lg:space-y-10 space-y-6 ]  lg:my-20">
         <div className="  [ lg:text-[4.5rem] text-[32px] ]">My superpowers</div>
 
-        <section className="grid lg:grid-cols-3 gap-x-10 gap-y-10 ">
-          {services.map(({ title, body }, index) => {
-            return (
-              <section>
-                <div className="space-y-6 text-black-200">
-                  <h4>0{++index}</h4>
+        <section className="grid lg:grid-cols-3 gap-x-10 gap-y-10  ">
+          {services &&
+            services?.map(({ title, description, category }, index) => {
+              return (
+                <section key={title}>
+                  <div className="space-y-6 text-black-200">
+                    <h4>0{++index}</h4>
 
-                  <hr />
-                </div>
-                <div className="mt-4">
-                  <h1 className=" [ lg:text-[1.5rem]  text-base ] font-medium mb-4">{title}</h1>
-                  <p className="text-black-400 w-[95%]">{body}</p>
-                </div>
-              </section>
-            );
-          })}
+                    <hr />
+                  </div>
+                  <div className="mt-4">
+                    <h1 className=" [ lg:text-[1.5rem]  text-base ] font-medium mb-4">
+                      {title}
+                    </h1>
+                    <p className="text-black-400 w-[95%]">{description}</p>
+
+                    <Link to={`/works?cat=${category}`}>
+                      <div className="flex gap-x-3 items-center mt-4 font-semibold text-md">
+                        <p className="">View projects </p>
+                        <img
+                          src={arrow}
+                          alt="view projects"
+                          className="rotate-180 w-3"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                </section>
+              );
+            })}
         </section>
       </section>
       {/*  */}

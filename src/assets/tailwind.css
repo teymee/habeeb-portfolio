@@ -41,6 +41,8 @@
   --color-black-3000: #1c1c1c;
 
   /* gray  */
+  --color-gray-400: #afafaf;
+  --color-gray-600: #dfdfdf;
   --color-gray-1000: #efeeed;
   --color-gray-2000: #03020a;
 
@@ -50,6 +52,8 @@
   /* green  */
   --color-green-1000: #59bd8b;
   --color-green-100: #059a8e;
+  --color-green-500: #1d8230;
+
   /* yellow */
   --color-yellow-1000: #f5c05c;
 }

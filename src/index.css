@@ -49,6 +49,11 @@ body {
 
 /*  */
 
+.ant-modal-content {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

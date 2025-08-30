@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   font-family: "Public Sans", sans-serif;
 
@@ -16,6 +16,22 @@
 
 body {
   margin: 0;
+}
+
+.tools-carousel {
+  animation: loop 15s linear infinite;
+  will-change: transform; /* Hints browser to optimize for animations */
+  backface-visibility: hidden; /* Prevents flicker on some devices */
+}
+
+@keyframes loop {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /*  */

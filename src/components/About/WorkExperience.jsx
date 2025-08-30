@@ -110,24 +110,28 @@ export default function WorkExperience() {
             <span className="font-thin">My </span> Toolbox
           </h1>
 
-          <section className="lg:bg-black-3000 lg:h-[100px] flex-responsive gap-x-4 justify-between">
-            {tools &&
-              tools?.map(({ image, name }, index) => {
-                const img = urlFor(image?.asset?._ref);
-                return (
-                  <div
-                    key={index}
-                    className="flex gap-x-2 items-center [ lg:text-[2.125rem] text-base ] text-white [ lg:bg-transparent bg-black-400 rounded py-4 px-6 ] w-[80%]"
-                  >
-                    <img
-                      src={img}
-                      alt=""
-                      className="[ lg:w-[50px] w-[32px] ]"
-                    />
-                    <p>{name}</p>
-                  </div>
-                );
-              })}
+          <section className="lg:bg-black-3000 lg:h-[100px] w-full ">
+            <section className="overflow-hidden">
+              <section className=" flex-responsive gap-x-10 tools-carousel w-fit">
+                {tools &&
+                  [...tools, ...tools]?.map(({ image, name }, index) => {
+                    const img = urlFor(image?.asset?._ref);
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-shrink-0 gap-x-2 items-center [ lg:text-[2.125rem] text-base ] text-white [ lg:bg-transparent bg-black-400 rounded py-4 px-6 ] min-w-max"
+                      >
+                        <img
+                          src={img}
+                          alt=""
+                          className="[ lg:w-[50px] w-[32px] ]"
+                        />
+                        <p className="whitespace-nowrap">{name}</p>
+                      </div>
+                    );
+                  })}
+              </section>
+            </section>
           </section>
         </section>
       </section>

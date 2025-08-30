@@ -48,16 +48,16 @@ export default function ProjectIntro({ details }) {
   return (
     <section className=" lg:py-10 pt-10 space-y-20">
       <section className="wrapper  [ lg:space-y-10 space-y-4 ]">
-        {/* 🚨 name  */}
-        <div className="text-black-400 space-y-8">
-          <div
-            onClick={() => navigate(-1)}
-            className="flex gap-x-2 cursor-pointer"
-          >
-            <img src={leftArrow} alt="go back" />
-            <p>Back</p>
-          </div>
+        <div
+          onClick={() => navigate(-1)}
+          className="flex gap-x-2 cursor-pointer fixed top-10 bg-white w-fit px-4 py-1 rounded-md"
+        >
+          <img src={leftArrow} alt="go back" />
+          <p>Back</p>
+        </div>
 
+        {/* 🚨 name  */}
+        <div className="text-black-400 space-y-8 mt-20">
           <h5 className="text-size20 font-medium">{tag}</h5>
           <h1 className="[ lg:text-size103 text-size40 ]    [ w-[30%] lg:leading-28 leading-14 ]">
             {name}

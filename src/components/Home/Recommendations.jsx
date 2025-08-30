@@ -17,8 +17,6 @@ export default function Recommendations({ isRounded = true }) {
       .finally(() => setIsLoading(false));
   }, []);
 
-
-
   return (
     <section
       className={`bg-black-700 py-20 bg-[url(@/assets/svg/noise.svg)] ${
@@ -33,10 +31,13 @@ export default function Recommendations({ isRounded = true }) {
           </h1>
         </div>
 
-        <section className="overflow-x-scroll hide-scrollbar flex items-center gap-x-8 ">
-          {!isLoading && comments?.map((comment, index) => {
-            return <Comment {...comment} key={index} />;
-          })}
+        <section className="overflow-x-scroll hide-scrollbar  ">
+          <section className="w-fit flex items-center gap-x-8">
+            {!isLoading &&
+              comments?.map((comment, index) => {
+                return <Comment {...comment} key={index} />;
+              })}
+          </section>
         </section>
       </section>
     </section>

@@ -44,7 +44,7 @@ export default function Hero() {
         </h1>
 
         {/* 🚨 cards  */}
-        <section className="grid [ lg:grid-cols-3 grid-cols-1 ] [ lg:gap-x-10 gap-y-4  ] text-black-50 text-base font-medium ">
+        <section className="grid justify-between [ lg:grid-cols-3 grid-cols-1 ] [ lg:gap-x-4 gap-y-4  ] text-black-50 text-base font-medium ">
           {/* one  */}
           <div className="bg-black-600 rounded-2xl py-4 px-6 space-y-4">
             <p>
@@ -52,7 +52,7 @@ export default function Hero() {
               Automation and project management solutions
             </p>
 
-            <div className="flex gap-x-10">
+            <div className="flex gap-x-6">
               
               <img src={ap} alt="" />
               <img src={fm} alt="" />

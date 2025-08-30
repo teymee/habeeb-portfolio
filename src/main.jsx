@@ -7,9 +7,9 @@ import App from "./App.jsx";
 import { ProjectProvider } from "./context/ProjectContext";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  // <StrictMode>
     <ProjectProvider>
       <App />
     </ProjectProvider>
-  </StrictMode>
+  // </StrictMode>
 );

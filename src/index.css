@@ -19,13 +19,13 @@ body {
 }
 
 .tools-carousel {
-  animation: loop 20s linear infinite;
+  animation: loop 50s linear infinite;
   will-change: transform; /* Hints browser to optimize for animations */
   backface-visibility: hidden; /* Prevents flicker on some devices */
 }
 @keyframes loop {
   from {
-    transform: translateX(100%);
+    transform: translateX(2r0%);
   }
 
   to {
@@ -47,7 +47,7 @@ body {
 }
 
 .bottom-carousel {
-  animation: animate-right linear 60s infinite;
+  animation: animate-right linear 70s infinite;
 }
 
 @keyframes animate-right {

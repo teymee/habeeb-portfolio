@@ -26,18 +26,26 @@ export default function Showcase() {
       {/* 🚨showcase  */}
       <section className="space-y-4 py-10 w-full">
         {/* 🚨top */}
-        <section className="grid grid-cols-4 gap-x-80 justify-center overflow-hidden">
-          {top.map((item, index) => {
-            return <ProjectSnippet key={index} {...item} />;
-          })}
+        <section className="w-full">
+          <section className="overflow-hidden">
+            <section className="top-carousel w-fit flex gap-x-10">
+              {[...top, ...top].map((item, index) => {
+                return <ProjectSnippet key={index} {...item} />;
+              })}
+            </section>
+          </section>
         </section>
         {/*  */}
 
         {/* 🚨bottom */}
-        <section className="grid grid-cols-3 gap-x-4 justify-center w-full">
-          {bottom.map((item, index) => {
-            return <ProjectSnippet key={index} {...item} />;
-          })}
+        <section className="justify-center w-full">
+          <section className="overflow-hidden">
+            <section className="bottom-carousel w-fit flex gap-x-20 ">
+              {[...bottom, ...bottom].map((item, index) => {
+                return <ProjectSnippet key={index} {...item} />;
+              })}
+            </section>
+          </section>
         </section>
         {/*  */}
       </section>

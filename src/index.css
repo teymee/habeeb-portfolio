@@ -19,20 +19,47 @@ body {
 }
 
 .tools-carousel {
-  animation: loop 15s linear infinite;
+  animation: loop 20s linear infinite;
   will-change: transform; /* Hints browser to optimize for animations */
   backface-visibility: hidden; /* Prevents flicker on some devices */
 }
-
 @keyframes loop {
   from {
-    transform: translateX(0%);
+    transform: translateX(100%);
   }
 
   to {
     transform: translateX(-50%);
   }
 }
+
+.top-carousel {
+  animation: animate-left linear 90s infinite;
+}
+
+@keyframes animate-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.bottom-carousel {
+  animation: animate-right linear 60s infinite;
+}
+
+@keyframes animate-right {
+  from {
+    transform: translateX(-90%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+
 
 /*  */
 

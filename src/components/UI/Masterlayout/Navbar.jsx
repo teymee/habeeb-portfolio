@@ -109,6 +109,8 @@ export default function Navbar() {
         })}
       </section>
 
+
+
       {/* 🚨 Modal  */}
 
       <Modal
@@ -162,7 +164,7 @@ export default function Navbar() {
           <img src={contact} alt="icon" className="h-8" />
 
           <button
-            onClick={handleCancel}
+            onClick={handleContactModal}
             aria-label="Close"
             className="text-3xl  cursor-pointer"
           >

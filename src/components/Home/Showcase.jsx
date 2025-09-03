@@ -35,7 +35,6 @@ export default function Showcase() {
     bottom = images;
   }
 
-  console.log(top, "mmm");
   return (
     <section className="[ lg:block hidden ]">
       {/* 🚨 header  */}

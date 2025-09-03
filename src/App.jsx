@@ -5,6 +5,9 @@ import Masterlayout from "@/components/UI/Masterlayout";
 import Work from "./pages/Work";
 import About from "./pages/About";
 import ProjectDetails from "./pages/ProjectDetails";
+import { ScrollTrigger } from "gsap/all";
+import gsap from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const routes = createBrowserRouter([

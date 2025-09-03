@@ -2,10 +2,10 @@ import React from "react";
 
 export default function ProjectOverviewCard({ app, logo, name, desc, tags }) {
   return (
-    <section className="bg-black-600 border border-white-100 min-h-[90vh] rounded-4xl flex flex-col items-center justify-center py-10 space-y-8">
+    <section className=" bg-black-600 border border-white-100 min-h-[90vh] rounded-4xl flex flex-col items-center justify-center py-10 space-y-8">
       <div className="flex flex-col justify-center items-center">
-        <img src={app} alt="" />
-        <img src={logo} alt="" className="w-[100px]" />
+        <img src={app} alt="" className="" />
+        <img src={logo} alt="" className="w-[100px] " />
       </div>
 
       <div className="flex flex-col text-center justify-center items-center space-y-3 font-medium">

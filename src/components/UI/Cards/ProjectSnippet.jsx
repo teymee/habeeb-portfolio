@@ -3,7 +3,7 @@ import React from "react";
 
 export default function ProjectSnippet({ image, name, year }) {
   let snippet = urlFor(image?.asset?._ref);
-     console.log(name, 'nnn')
+ 
   return (
     <section className=" w-[426px] bg-white-600 rounded ">
       <section className="wrapper space-y-4 py-4">

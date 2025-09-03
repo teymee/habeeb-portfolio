@@ -43,7 +43,7 @@ export default function Projects() {
           pinSpacing: false,
           scrub: 1,
           invalidateOnRefresh: true,
-          markers: true,
+          // markers: true,
         },
       });
     });
@@ -179,11 +179,7 @@ export default function Projects() {
         </Link>
       </section>
 
-      {/* <section>
-        <div className="cont">
-          <div className="square h-10 w-10 bg-red-500"></div>
-        </div>
-      </section> */}
+    
 
       {/* 🚨 Project  */}
 

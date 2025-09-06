@@ -5,12 +5,16 @@ import React, { useEffect, useState } from "react";
 // import figma from "@/assets/svg/figma.svg";
 import { sanityClient } from "@/sanity/client";
 import { urlFor } from "@/utils";
+import useWindowSize from "@/hooks/useWindowSize";
 
 export default function WorkExperience() {
   const [experiences, setExperiences] = useState(null);
   const [skills, setSkills] = useState(null);
-
   const [tools, setTools] = useState(null);
+
+  const {isLargeScreen} = useWindowSize()
+
+  console.log(isLargeScreen, 'mmm')
 
   useEffect(() => {
     const query = `{
@@ -23,7 +27,7 @@ export default function WorkExperience() {
       .fetch(query)
       .then((data) => {
         setExperiences(data?.experiences);
-        setSkills(data?.skills?.[0]?.skills);
+        setSkills(data?.skills?.[0]?.skills?.filter(Boolean));
         setTools(data?.tools?.[0]?.tools);
       })
       .catch(console.error);
@@ -112,14 +116,16 @@ export default function WorkExperience() {
 
           <section className="lg:bg-black-3000 lg:h-[100px] w-full ">
             <section className="overflow-hidden">
-              <section className=" flex-responsive gap-x-10 tools-carousel w-fit">
+              <section
+                className={`flex-responsive gap-x-10  [ lg:w-fit w-full  ] tools-carousel`}
+              >
                 {tools &&
                   [...tools, ...tools]?.map(({ image, name }, index) => {
                     const img = urlFor(image?.asset?._ref);
                     return (
                       <div
                         key={index}
-                        className="flex flex-shrink-0 gap-x-2 items-center [ lg:text-[2.125rem] text-base ] text-white [ lg:bg-transparent bg-black-400 rounded py-4 px-6 ] min-w-max"
+                        className="flex flex-shrink-0 gap-x-2 items-center [ lg:text-[2.125rem] text-base ] text-white [ lg:bg-transparent bg-black-400 rounded py-4 px-6 ] [ lg:min-w-max w-full  ]"
                       >
                         <img
                           src={img}
@@ -138,35 +144,3 @@ export default function WorkExperience() {
     </section>
   );
 }
-
-//  <section className="[ lg:space-y-16 space-y-6 ]">
-//         {Array.from(
-//           { length: Math.ceil(skills.length / 3) },
-//           (_, i) => i * 3
-//         ).map((startIndex, rowIndex) => (
-//           <div key={startIndex} className="flex-responsive gap-x-8">
-//             {skills
-//               .slice(startIndex, startIndex + 3)
-//               .map((skill, index) => (
-//                 <section className="">
-//                   <div className="w-[80%] h-[1px] border-linear mx-auto"></div>
-
-//                   <div
-//                     key={skill}
-//                     className={` skill-bg flex gap-x-4 items-center rounded-2xl border border-[#ffffff10]  py-4 px-6 font-Manrope ${
-//                       index === 0 &&
-//                       rowIndex !== Math.ceil(skills.length / 3) - 1
-//                         ? "lg:w-[350px] w-fit"
-//                         : "w-fit"
-//                     }`}
-//                   >
-//                     <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
-//                     <h1 className="text-white [ lg:text-[24px] text-base ] font-semibold">
-//                       {skill}
-//                     </h1>
-//                   </div>
-//                 </section>
-//               ))}
-//           </div>
-//         ))}
-//       </section>

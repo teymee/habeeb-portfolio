@@ -87,5 +87,5 @@
     @apply block lg:hidden
 }
 .flex-responsive {
-  @apply flex lg:flex-row flex-col gap-y-6;
+  @apply flex lg:flex-row flex-col lg:gap-y-6 gap-y-4;
 }

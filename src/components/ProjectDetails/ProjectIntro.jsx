@@ -95,7 +95,7 @@ export default function ProjectIntro({ details }) {
           <h3 className="w-[20%] uppercase">Overview</h3>
 
           <div className="space-y-10">
-            <p className="text-black-400 w-[80%]">{overview}</p>
+            <p className="text-black-400 [ lg:w-[80%]  ]">{overview}</p>
 
             <div className="flex gap-x-10 items-center">
               {liveWebsite && (

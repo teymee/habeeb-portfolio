@@ -28,7 +28,7 @@ export default function Contact() {
             <img
               src={triggerMail}
               alt=""
-              className="absolute bottom-0 [ lg:right-4 right-0 ] z-10 "
+              className="absolute bottom-0 [ lg:right-4 right-0 ] z-10  [ lg:w-[125px] w-[90px]  ] "
             />
           </div>
 
@@ -47,7 +47,7 @@ export default function Contact() {
             <img
               src={calendar}
               alt=""
-              className="absolute bottom-0 [ lg:right-4 right-0 ] z-10 "
+              className="absolute bottom-0 [ lg:right-4 right-0 ] z-10 [ lg:w-[125px] w-[60px]  ] "
             />
           </div>
 
@@ -56,9 +56,9 @@ export default function Contact() {
               <h1 className=" [ lg:text-2xl text-base ] [ lg:font-normal font-medium ] ">
                 Whatsapp contact
               </h1>
-              <div className="flex gap-x-4 items-center text-base font-medium">
+              <div className="flex-responsive !gap-y-1 gap-x-4 lg:items-center text-base font-medium">
                 <p className="text-black-200 ">Direct phone chat</p>
-                <span className="w-[6px] h-[6px] rounded-full bg-gray-400"></span>
+                <span className="w-[6px] h-[6px] rounded-full bg-gray-400 lg-show"></span>
 
                 <p className="text-green-500 ">Drop chat</p>
               </div>
@@ -66,7 +66,7 @@ export default function Contact() {
             <img
               src={whatsapp}
               alt=""
-              className="absolute bottom-0 [ lg:right-4 right-0 ] z-10 "
+              className="absolute bottom-0 [ lg:right-4 right-0 ] z-10 [ lg:w-[125px] w-[80px]  ]"
             />
           </div>
         </section>

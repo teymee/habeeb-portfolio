@@ -35,7 +35,7 @@ export default function TagSection({ title, subtitle, excerpt, listArr }) {
               return (
                 <li
                   key={index}
-                  className="list-disc !font-light text-xl lg:w-9/12"
+                  className="list-disc !font-light [ lg:text-xl text-md ] lg:w-9/12"
                 >
                   {item}
                 </li>

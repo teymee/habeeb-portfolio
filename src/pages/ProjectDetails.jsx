@@ -29,11 +29,14 @@ export default function ProjectDetails() {
 
           {/* extra images  */}
           {details?.extraImages?.length > 0 && (
-            <section className=" w-11/12 mx-auto grid grid-cols-4 gap-x-5 pverflow-x-hidden gap-y-4 ">
+            <section className=" w-11/12 mx-auto grid  lg:grid-cols-4 gap-x-5 pverflow-x-hidden gap-y-4 ">
               {details?.extraImages?.map((image) => {
                 const finalImg = urlFor(image?.asset?._ref);
                 return (
-                  <div key={image?.asset?._ref} className="bg-white-600  py-4 px-4 rounded-xl flex items-center justify-center">
+                  <div
+                    key={image?.asset?._ref}
+                    className="bg-white-600  py-4 px-4 rounded-xl flex items-center justify-center"
+                  >
                     <img src={finalImg} className="h-[240px]" />
                   </div>
                 );

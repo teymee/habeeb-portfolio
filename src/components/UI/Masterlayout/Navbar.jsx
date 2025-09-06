@@ -79,7 +79,7 @@ export default function Navbar() {
     }
   };
   return (
-    <nav className="[ lg:w-[40%] w-[90%]  ] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
+    <nav className="[ lg:w-[40%] w-[90%] ] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
       <section className="flex justify-between [ lg:px-8 px-4 ] ">
         {navs.map(({ activeIcon, icon, name, link }) => {
           let isActive;

@@ -51,7 +51,7 @@ export default function Projects() {
     <section className="wrapper global-gap space-y-10 relative">
       {/* 🚨 header  */}
       <section className="justify-between font-thin flex items-center">
-        <h1 className="[ lg:text-[40px] text-[30px]  ] lg:leading-12 text-black-200">
+        <h1 className="[ lg:text-[40px] text-[30px] ] lg:leading-12 text-black-200">
           Selected <br />
           <span className="font-bold"> Projects </span>
         </h1>
@@ -66,7 +66,7 @@ export default function Projects() {
 
       {/* 🚨 Project  */}
 
-      <section ref={cardContainter} className="project-container">
+      <section ref={cardContainter} className="project-container relative z-50 ">
         {!isLoading &&
           projects &&
           [...projects]?.slice(0, 3)?.map((pro, index) => {

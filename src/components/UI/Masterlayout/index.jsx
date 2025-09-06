@@ -38,7 +38,7 @@ export default function Masterlayout() {
         </section>
       </section>
 
-      <section className="bottom-10 fixed w-full z-50">
+      <section className="bottom-10 fixed w-full z-40">
         <Navbar />
       </section>
       <Outlet />

@@ -48,8 +48,7 @@ export default function Hero() {
           {/* one  */}
           <div className="bg-black-600 rounded-2xl py-4 px-6 space-y-4">
             <p>
-              <span className="text-black">Payments</span>, Fuel station
-              Automation and project management solutions
+              <span className="text-black">Payments</span>, Fintech, Fuel station Automation
             </p>
 
             <div className="flex gap-x-6">

@@ -23,7 +23,6 @@ export default function Recommendations({ isRounded = true }) {
         isRounded ? " [ lg:rounded-t-2xl rounded-t-xl ] " : undefined
       }`}
     >
-      
       <section className="wrapper space-y-10">
         <div>
           <h1 className=" [ lg:text-[2.5rem] text-[2.1rem] ] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">
@@ -32,11 +31,13 @@ export default function Recommendations({ isRounded = true }) {
         </div>
 
         <section className="overflow-x-scroll hide-scrollbar  ">
-          <section className="w-fit flex items-center gap-x-8">
-            {!isLoading &&
-              comments?.map((comment, index) => {
-                return <Comment {...comment} key={index} />;
-              })}
+          <section className="w-fit">
+            <section className="w-fit flex items-center gap-x-8 m-w-max comment-carousel">
+              {!isLoading && comments &&
+                [...comments, ...comments]?.map((comment, index) => {
+                  return <Comment {...comment} key={index} />;
+                })}
+            </section>
           </section>
         </section>
       </section>

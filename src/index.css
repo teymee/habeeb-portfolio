@@ -17,6 +17,18 @@
 body {
   margin: 0;
 }
+.comment-carousel {
+  animation: comments 140s linear infinite;
+}
+
+@keyframes comments {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
 
 .tools-carousel {
   animation: loop 50s linear infinite;
@@ -25,7 +37,7 @@ body {
 }
 @keyframes loop {
   from {
-    transform: translateX(2r0%);
+    transform: translateX(20%);
   }
 
   to {
@@ -95,10 +107,10 @@ body {
   overflow: hidden;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .tools-carousel {
-  animation: none;
-}
+    animation: none;
+  }
 }
 
 @media (prefers-color-scheme: light) {

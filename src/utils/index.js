@@ -4,5 +4,10 @@ import imageUrlBuilder from "@sanity/image-url";
 const builder = imageUrlBuilder(sanityClient);
 
 export function urlFor(source) {
-  return source ? builder.image(source) : '';
+  return source ? builder.image(source) : "";
+}
+
+export function trimText(text, num = 300) {
+  if (!text) return "n/a";
+  return text.length > num ? `${text?.slice(0, num)}...` : text;
 }

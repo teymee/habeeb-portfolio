@@ -23,7 +23,7 @@ export default function Recommendations({ isRounded = true }) {
         isRounded ? " [ lg:rounded-t-2xl rounded-t-xl ] " : undefined
       }`}
     >
-      =
+      
       <section className="wrapper space-y-10">
         <div>
           <h1 className=" [ lg:text-[2.5rem] text-[2.1rem] ] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">

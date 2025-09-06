@@ -52,7 +52,7 @@ export default function Navbar() {
     {
       activeIcon: aAbout,
       icon: about,
-      name: "About",
+      name: "About me",
       link: "/about",
     },
     {
@@ -64,7 +64,7 @@ export default function Navbar() {
     {
       activeIcon: aContact,
       icon: contact,
-      name: "Contact",
+      name: "Get in touch",
       // link: "/contact",
     },
   ];
@@ -72,7 +72,7 @@ export default function Navbar() {
   const handleNavigation = (link, name) => {
     if (name === "Read CV") {
       openCV();
-    } else if (name === "Contact") {
+    } else if (name === "Get in touch") {
       handleContactModal();
     } else {
       navigate(link);

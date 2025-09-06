@@ -18,15 +18,15 @@ export default function Footer() {
     >
       <section className="wrapper bg-black-800 rounded-xl space-y-10 py-10 flex flex-col justify-center">
         <div className="text-center   text-white w-full [ lg:text-[72px] text-[40px] ] [ lg:leading-20 leading-13 ]">
-          <h1 className="font-thin">Have amazing</h1>
-          <h1 className="font-semibold">ideas?</h1>
+          <h1 className="font-thin">Let's create something</h1>
+          <h1 className="font-semibold">together!</h1>
 
-          <Link to="/">
+          <a href="mailto:abdullahihabeeb98@gmail.com">
             <button className="w-fit mx-auto    border border-white rounded-full flex gap-x-2 text-base font-semibold text-white [ lg:mt-10 mt-5 ] [ px-4 lg:py-4  py-3 ]">
-              <p>See an email</p>
+              <p>Get in touch</p>
               <img src={arrowUp} alt="" />
             </button>
-          </Link>
+          </a>
         </div>
 
         <div className="border-b border-white-300  overflow-y-hidden  [ lg:h-[100px] h-[37px] ] ">

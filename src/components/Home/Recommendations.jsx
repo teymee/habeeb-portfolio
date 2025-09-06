@@ -20,14 +20,14 @@ export default function Recommendations({ isRounded = true }) {
   return (
     <section
       className={`bg-black-700 py-20 bg-[url(@/assets/svg/noise.svg)] ${
-        isRounded ? "rounded-t-2xl " : undefined
+        isRounded ? " [ lg:rounded-t-2xl rounded-t-xl ] " : undefined
       }`}
     >
       {error}
       <section className="wrapper space-y-10">
         <div>
-          <h1 className="text-[2.5rem] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">
-            Don’t take my words <br /> for it.
+          <h1 className=" [ lg:text-[2.5rem] text-[2.1rem] ] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">
+            Don’t take my words <br className="" /> for it.
           </h1>
         </div>
 

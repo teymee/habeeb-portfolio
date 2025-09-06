@@ -36,7 +36,7 @@ export default function Showcase() {
   }
 
   return (
-    <section className="[ lg:block hidden ]">
+    <section className="">
       {/* 🚨 header  */}
       <section className="wrapper justify-between flex items-center">
         <h1 className="text-[2.5rem] leading-12 font-thin text-black-200">
@@ -52,7 +52,7 @@ export default function Showcase() {
           {/* 🚨top */}
           <section className="w-full">
             <section className="overflow-hidden">
-              <section className="top-carousel w-fit flex gap-x-10">
+              <section className="top-carousel w-fit flex [ lg:gap-x-10 gap-x-4 ] ">
                 {[...top, ...top].map((data, index) => {
                   let item = data?.shots;
 
@@ -66,7 +66,7 @@ export default function Showcase() {
           {/* 🚨bottom */}
           <section className="justify-center w-full">
             <section className="overflow-hidden">
-              <section className="bottom-carousel w-fit flex gap-x-20 ">
+              <section className="bottom-carousel w-fit flex [ lg:gap-x-16 gap-x-8 ] ">
                 {[...bottom, ...bottom].map((data, index) => {
                   let item = data?.shots;
                   return <ProjectSnippet key={index} {...item} />;

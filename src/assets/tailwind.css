@@ -80,6 +80,12 @@
 .header-style {
   @apply lg:text-[96px] text-[36px]  lg:leading-24 leading-12;
 }
+.lg-show{
+  @apply lg:block hidden
+}
+.sm-show{
+    @apply block lg:hidden
+}
 .flex-responsive {
   @apply flex lg:flex-row flex-col gap-y-6;
 }

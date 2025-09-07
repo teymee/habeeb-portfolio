@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
@@ -15,19 +15,59 @@ import { Modal } from "antd";
 
 export default function Masterlayout() {
   const { pathname } = useLocation();
-
+  const [isFooter, setIsFooter] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const handleContactModal = () => {
     setIsContactOpen((prevState) => !prevState);
   };
-
+  const navRef = useRef(null);
+  const footerRef = useRef(null);
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = navRef.current;
+      const footer = footerRef.current;
+      if (!navbar || !footer) return;
+      const currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      // Get footer position and dimensions
+      const footerRect = footer.getBoundingClientRect();
+      const footerTop = footerRect.top + currentScroll;
+
+      // Get navbar height
+      const navHeight = navbar.offsetHeight;
+
+      // Get viewport height
+      const viewportHeight = window.innerHeight;
+
+      // Calculate the trigger point where navbar would overlap footer
+      const triggerPoint = footerTop - viewportHeight + navHeight;
+      if (currentScroll >= triggerPoint) {
+        setIsFooter(true);
+      } else {
+        setIsFooter(false);
+      }
+      console.log(triggerPoint, "mmm");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <section className="relative h-full">
       {/* 🚨face  */}
-      <section onClick={handleContactModal} className=" fixed [ lg:block hidden ] z-[999999999] bottom-30 right-10 cursor-pointer ">
+      <section
+        onClick={handleContactModal}
+        className=" fixed [ lg:block hidden ] z-[999999999] bottom-30 right-10 cursor-pointer "
+      >
         <section className="relative">
           <div className=" [animation-duration:12s] animate-spin absolute right-[60px] w-[120px]">
             <img src={text} alt="" />
@@ -38,11 +78,18 @@ export default function Masterlayout() {
         </section>
       </section>
 
-      <section className="bottom-10 fixed w-full z-40">
+      <section
+        ref={navRef}
+        className={` ${
+          isFooter ? "top-4" : "bottom-10"
+        } transition duration-150 ease-in-out fixed w-full z-40`}
+      >
         <Navbar />
       </section>
       <Outlet />
-      <Footer />
+      <section ref={footerRef}>
+        <Footer />
+      </section>
 
       {/* 🚨 contact modal  */}
 

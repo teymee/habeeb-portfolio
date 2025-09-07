@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // 🚨 assets
@@ -6,10 +6,20 @@ import arrowUp from "@/assets/svg/white-arrow.svg";
 import insta from "@/assets/svg/instagram.svg";
 import twitter from "@/assets/svg/twitter.svg";
 import linkedIn from "@/assets/svg/linkedIn.svg";
+
+import contact from "@/assets/svg/inactive-contact.svg";
+import Contact from "./Contact";
+import { Modal } from "antd";
 export default function Footer() {
   const { pathname } = useLocation();
 
   const applyRadius = pathname !== "/" || pathname !== "/about";
+
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const handleContactModal = () => {
+    setIsContactOpen((prevState) => !prevState);
+  };
+
   return (
     <section
       className={`bg-black-700  py-20 bg-[url(@/assets/svg/noise.svg)] ${
@@ -21,12 +31,13 @@ export default function Footer() {
           <h1 className="font-thin">Let's create something</h1>
           <h1 className="font-semibold">together!</h1>
 
-          <a href="mailto:abdullahihabeeb98@gmail.com">
-            <button className="w-fit mx-auto    border border-white rounded-full flex gap-x-2 text-base font-semibold text-white [ lg:mt-10 mt-5 ] [ px-4 lg:py-4  py-3 ]">
-              <p>Get in touch</p>
-              <img src={arrowUp} alt="" />
-            </button>
-          </a>
+          <button
+            onClick={handleContactModal}
+            className="w-fit mx-auto  cursor-pointer   border border-white rounded-full flex gap-x-2 text-base font-semibold text-white [ lg:mt-10 mt-5 ] [ px-4 lg:py-4  py-3 ]"
+          >
+            <p>Get in touch</p>
+            <img src={arrowUp} alt="" />
+          </button>
         </div>
 
         <div className="border-b border-white-300  overflow-y-hidden  [ lg:h-[100px] h-[37px] ] ">
@@ -68,6 +79,39 @@ export default function Footer() {
           </a>
         </section>
       </section>
+
+      {/* 🚨 contact modal  */}
+
+      <Modal
+        title={null}
+        closable={false}
+        open={isContactOpen}
+        onCancel={handleContactModal}
+        footer={false}
+        width={{
+          xs: "90%",
+          sm: "80%",
+          md: "70%",
+          lg: "60%",
+          xl: "50%",
+          xxl: "40%",
+        }}
+        style={{ top: 30 }}
+      >
+        <div className="flex items-center justify-between py-4 px-4 border-b border-gray-600">
+          <img src={contact} alt="icon" className="h-8" />
+
+          <button
+            onClick={handleContactModal}
+            aria-label="Close"
+            className="text-3xl  cursor-pointer"
+          >
+            ×
+          </button>
+        </div>
+        <Contact />
+      </Modal>
+      {/*  */}
     </section>
   );
 }

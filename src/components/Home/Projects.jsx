@@ -86,7 +86,10 @@ export default function Projects() {
                 ref={(el) => (cardsRef.current[index] = el)}
                 className=" flex justify-between items-center project-card "
               >
-                <ProjectOverviewCard {...details} />
+                {/* <Link     to={`/project-details/${_id}`}> */}
+                 <ProjectOverviewCard {...details} />
+                {/* </Link> */}
+               
               </section>
             );
           })}

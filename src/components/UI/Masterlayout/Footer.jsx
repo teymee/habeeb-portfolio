@@ -28,7 +28,7 @@ export default function Footer() {
     >
       <section className="wrapper bg-black-800 rounded-xl space-y-10 py-10 flex flex-col justify-center">
         <div className="text-center   text-white w-full [ lg:text-[72px] text-[40px] ] [ lg:leading-20 leading-13 ]">
-          <h1 className="font-thin">Let's create something</h1>
+          <h1 className="font-thin">Let's create something amazing</h1>
           <h1 className="font-semibold">together!</h1>
 
           <button

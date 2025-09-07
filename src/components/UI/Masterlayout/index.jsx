@@ -80,9 +80,12 @@ export default function Masterlayout() {
 
       <section
         ref={navRef}
-        className={` ${
-          isFooter ? "top-4" : "bottom-10"
-        } transition duration-150 ease-in-out fixed w-full z-40`}
+        style={{
+          top: isFooter ? "1rem" : "calc(100vh - 2.5rem - 10%)",
+        }}
+        className={` 
+       
+        transition-all duration-500 ease-in-out fixed w-full z-40`}
       >
         <Navbar />
       </section>

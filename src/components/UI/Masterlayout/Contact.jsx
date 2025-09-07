@@ -58,7 +58,7 @@ export default function Contact() {
           </div> */}
 
           {/*🚨 Whatsap  */}
-          <a href={`https://wa.me/+2348030638306`}>
+          <a href={`https://wa.me/+2348030638306`} target="_blank">
             <div className="bg-[#F5F5F5] relative text-black rounded-xl h-[120px] px-6 ">
               <div className="pt-8 z-30 relative">
                 <h1 className=" [ lg:text-2xl text-base ] [ lg:font-normal font-medium ] ">

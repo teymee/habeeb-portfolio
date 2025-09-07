@@ -27,10 +27,15 @@ export default function Projects() {
   }, [projects]);
 
   useGSAP(() => {
-    if (isLoading || !projects) return;
+    if (isLoading || !projects || projects.length === 0) return;
     const cards = cardsRef.current.filter(Boolean);
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+    const animations = [];
+
     cards.forEach((card, i) => {
-      gsap.to(card, {
+      if (!card || !card.parentNode) return;
+      const animation = gsap.to(card, {
         scale: 0.8 + 0.2 * (i / cards?.length - 1),
         scrollTrigger: {
           trigger: card,
@@ -41,11 +46,34 @@ export default function Projects() {
           pinSpacing: false,
           scrub: 1,
           invalidateOnRefresh: true,
+          id: `card-${i}`,
+          onRefresh: () => {
+            // Check if element still exists when refreshing
+            if (!card.parentNode) {
+              ScrollTrigger.getById(`card-${i}`)?.kill();
+            }
+          },
           // markers: true,
         },
       });
+
+      animations.push(animation);
     });
-  }, [isLoading]);
+    return () => {
+      animations.forEach((animation) => {
+        if (animation && animation.scrollTrigger) {
+          animation.scrollTrigger.kill();
+        }
+      });
+      ScrollTrigger.refresh();
+    };
+  }, [isLoading, projects]);
+
+  useEffect(() => {
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <section className="wrapper global-gap space-y-10 relative">
@@ -66,7 +94,10 @@ export default function Projects() {
 
       {/* 🚨 Project  */}
 
-      <section ref={cardContainter} className="project-container relative z-50 ">
+      <section
+        ref={cardContainter}
+        className="project-container relative z-50 "
+      >
         {!isLoading &&
           projects &&
           [...projects]?.slice(0, 3)?.map((pro, index) => {
@@ -83,13 +114,16 @@ export default function Projects() {
             return (
               <section
                 key={`${tag}-${index}`}
-                ref={(el) => (cardsRef.current[index] = el)}
+                ref={(el) => {
+                  if (el) {
+                    cardsRef.current[index] = el;
+                  }
+                }}
                 className=" flex justify-between items-center project-card "
               >
                 {/* <Link     to={`/project-details/${_id}`}> */}
-                 <ProjectOverviewCard {...details} />
+                <ProjectOverviewCard {...details} />
                 {/* </Link> */}
-               
               </section>
             );
           })}

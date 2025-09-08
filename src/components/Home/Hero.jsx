@@ -34,7 +34,7 @@ export default function Hero() {
       duration: 1,
       ease: "power2",
     };
-    tl.from(".avatar", { ...aniStyle, ease: "bounce", duration: 2 });
+    tl.from(".avatar", { autoAlpha: 0, y: 50, duration: 1.5 });
     tl.from(titleSplit.words, { ...aniStyle, stagger: 0.1 }, "-=0.3");
     tl.from(
       ".short-desc",

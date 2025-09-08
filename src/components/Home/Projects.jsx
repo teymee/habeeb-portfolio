@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 // 🚨 assets
@@ -15,11 +15,15 @@ import { ScrollTrigger } from "gsap/all";
 
 export default function Projects() {
   const { fetchProject, projects, isLoading } = useContext(ProjectContext);
+  const [mounted, setMounted] = useState(false);
 
   const cardContainter = useRef(null);
   const cardsRef = useRef([]);
   useEffect(() => {
     fetchProject();
+    setMounted(true);
+
+    return () => setMounted(false);
   }, []);
 
   useEffect(() => {
@@ -27,9 +31,15 @@ export default function Projects() {
   }, [projects]);
 
   useGSAP(() => {
-    if (isLoading || !projects || projects.length === 0) return;
+    if (!mounted || isLoading || !projects || projects.length === 0) return;
     const cards = cardsRef.current.filter(Boolean);
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+    // Kill all existing ScrollTriggers for this component
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.vars?.id?.startsWith?.("project-card-")) {
+        trigger.kill();
+      }
+    });
 
     const animations = [];
 
@@ -46,7 +56,7 @@ export default function Projects() {
           pinSpacing: false,
           scrub: 1,
           invalidateOnRefresh: true,
-          id: `card-${i}`,
+          id: `project-card-${i}`, // Add unique identifier
           onRefresh: () => {
             // Check if element still exists when refreshing
             if (!card.parentNode) {
@@ -69,9 +79,14 @@ export default function Projects() {
     };
   }, [isLoading, projects]);
 
+  // Add this cleanup on component unmount
   useEffect(() => {
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars?.id?.startsWith?.("project-card-")) {
+          trigger.kill();
+        }
+      });
     };
   }, []);
 

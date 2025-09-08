@@ -79,7 +79,7 @@ export default function Navbar() {
     }
   };
   return (
-    <nav className="[ lg:w-[40%] w-[90%] ] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
+    <nav className="[ lg:w-[40%] w-[95%] ] [ px-4 lg:px-0 ] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
       <section className="flex justify-between [ lg:px-8 px-4 ] ">
         {navs.map(({ activeIcon, icon, name, link }) => {
           let isActive;
@@ -101,7 +101,7 @@ export default function Navbar() {
               }`}
               onClick={() => handleNavigation(link, name)}
             >
-              <img src={isActive ? activeIcon : icon} alt={name} />
+              <img src={isActive ? activeIcon : icon} alt={name} className="[ lg:w-[20px] w-[15px] ]"/>
 
               <p className="[ lg:text-sm text-[10px] ]">{name}</p>
             </div>

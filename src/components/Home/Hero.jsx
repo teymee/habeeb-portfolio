@@ -7,29 +7,71 @@ import tracker from "@/assets/svg/tracker.svg";
 import epump from "@/assets/svg/epump.svg";
 import media from "@/assets/svg/media.svg";
 import veda from "@/assets/svg/veda.svg";
-import ap from "@/assets/svg/ardova.svg"
-import cloud from "@/assets/svg/cloud.svg"
-import print from "@/assets/svg/print.svg"
+import ap from "@/assets/svg/ardova.svg";
+import cloud from "@/assets/svg/cloud.svg";
+import print from "@/assets/svg/print.svg";
+// import bgImg from "@/assets/svg/hero-bg.svg";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
 
 export default function Hero() {
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    const titleSplit = SplitText.create(".title", {
+      type: "words",
+    });
+    const desc = SplitText.create(".desc", {
+      type: "lines",
+      linesClass: "line-overflow",
+      mask: "lines",
+    });
+
+    const aniStyle = {
+      autoAlpha: 0,
+      y: 50,
+      duration: 1,
+      ease: "power2",
+    };
+    tl.from(".avatar", { ...aniStyle, ease: "bounce", duration: 2 });
+    tl.from(titleSplit.words, { ...aniStyle, stagger: 0.1 }, "-=0.3");
+    tl.from(
+      ".short-desc",
+      {
+        ...aniStyle,
+      },
+      "-=1"
+    );
+
+    tl.from(
+      desc.lines,
+      {
+        ...aniStyle,
+        stagger: 0.1,
+      },
+      "-=1"
+    );
+  });
   return (
     <section>
       {/* 🚨 Hero  */}
-      <section className="h-screen items-center w-full bg-cover bg-[url(@/assets/svg/hero-bg.svg)] flex flex-col justify-center space-y-4">
-        <div className="flex justify-center">
+      <section className="h-screen hero items-center w-full bg-[url(@/assets/svg/hero-bg.svg)] bg-cover flex flex-col justify-center space-y-4 [ lg:mt-[-10px] ]">
+        <div className="flex justify-center avatar">
           <img src={avatar} alt="" className="[ lg:w-full w-[4.875rem] ]" />
         </div>
 
-        <div className="space-y-4 text-center">
-          <h1 className=" [ text-[45px] lg:text-[72px] ] font-medium">
-            Hi, I’m Habeeb
+        <div className="space-y-4 text-center intro">
+          <h1 className=" [ text-[45px] lg:text-[79px] ] font-medium title">
+            Hi, I'm Habeeb
           </h1>
-          <h4 className="text-size20  mt-[-20px]">
+          <h4 className="text-size20  mt-[-20px] short-desc">
             A designer who makes ideas click.
           </h4>
-          <p className="text-center text-black-300 mt-4 [ lg:w-[80%] w-[90%] ] text-base font-medium mx-auto">
+          <p className="text-center text-black-300 mt-4 [ lg:w-full w-[90%] ] [ lg:text-lg text-base ] font-medium mx-auto desc">
             Helping businesses scale with design that speaks clearly, performs
-            effortlessly, and delivers measurable value.
+            effortlessly, <br />
+            and delivers measurable value.
           </p>
         </div>
       </section>
@@ -48,11 +90,11 @@ export default function Hero() {
           {/* one  */}
           <div className="bg-black-600 rounded-2xl py-4 px-6 space-y-4">
             <p>
-              <span className="text-black">Payments</span>, Fintech, Fuel station Automation
+              <span className="text-black">Payments</span>, Fintech, Fuel
+              station Automation
             </p>
 
             <div className="flex gap-x-6">
-              
               <img src={ap} alt="" />
               <img src={fm} alt="" />
               <img src={tracker} alt="" />

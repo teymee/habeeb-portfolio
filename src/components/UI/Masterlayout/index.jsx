@@ -51,7 +51,6 @@ export default function Masterlayout() {
       } else {
         setIsFooter(false);
       }
-      console.log(triggerPoint, "mmm");
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -59,8 +58,9 @@ export default function Masterlayout() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
+ 
   return (
     <section className="relative h-full">
       {/* 🚨face  */}
@@ -81,11 +81,9 @@ export default function Masterlayout() {
       <section
         ref={navRef}
         style={{
-          top: isFooter ? "1rem" : "calc(100vh - 2.5rem - 10%)",
+          top: isFooter ? "1rem" : "calc(100vh - 2.5rem - 12%)",
         }}
-        className={` 
-       
-        transition-all duration-500 ease-in-out fixed w-full z-40`}
+        className={` transition-all duration-500 ease-in-out fixed w-full z-40`}
       >
         <Navbar />
       </section>

@@ -17,13 +17,7 @@ import { SplitText } from "gsap/all";
 
 export default function Hero() {
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero",
-        start: "top top",
-        end: "bottom bottom",
-      },
-    });
+    const tl = gsap.timeline();
 
     const titleSplit = SplitText.create(".title", {
       type: "words",
@@ -83,7 +77,7 @@ export default function Hero() {
       fadedText: SplitText.create(".faded-text h1", {
         type: "words",
       }).words,
-         workHeader: SplitText.create(".faded-text h1", {
+         workHeader: SplitText.create(".work-header h1", {
         type: "words",
       }).words,
     };
@@ -124,7 +118,7 @@ export default function Hero() {
       {/* 🚨 Hero  */}
       <section className="h-screen hero items-center w-full bg-[url(@/assets/svg/hero-bg.svg)] bg-cover flex flex-col justify-center space-y-4 [ lg:mt-[-10px] ]">
         <div className="flex justify-center avatar">
-          <img src={avatar} alt="" className="[ lg:w-full w-[4.875rem] ]" />
+          <img src={avatar} alt="" className="[ lg:w-full w-[8rem] ]" />
         </div>
 
         <div className="space-y-4 text-center intro">
@@ -134,9 +128,9 @@ export default function Hero() {
           <h4 className="text-size20  mt-[-20px] short-desc">
             A designer who makes ideas click.
           </h4>
-          <p className="text-center text-black-300 mt-4 [ lg:w-full w-[90%] ] [ lg:text-lg text-base ] font-medium mx-auto desc">
+          <p className="text-center text-black-300 mt-4 [ lg:w-full w-[95%] ] [ lg:text-lg text-md ] font-medium mx-auto desc">
             Helping businesses scale with design that speaks clearly, performs
-            effortlessly, <br />
+            effortlessly, <br  />
             and delivers measurable value.
           </p>
         </div>
@@ -145,7 +139,7 @@ export default function Hero() {
 
       {/* 🚨 Niche  */}
       <section className="wrapper global-gap space-y-4 niche">
-        <h1 className="text-black-200 text-[32px] font-semibold [ lg:w-[40%] ] ">
+        <h1 className="text-black-200 [ lg:text-[32px] text-2xl ] font-semibold [ lg:w-[40%] ] ">
           I've been in various{" "}
           <span className="text-black">niches and domains, working </span>
           with design:
@@ -160,12 +154,12 @@ export default function Hero() {
               station Automation
             </p>
 
-            <div className="flex gap-x-6">
-              <img src={ap} alt="" />
-              <img src={fm} alt="" />
-              <img src={tracker} alt="" />
+            <div className="flex lg:gap-x-6 gap-x-4">
+              <img src={ap} alt="" className="lg:w-fit w-8" />
+              <img src={fm} alt="" className="lg:w-fit w-10"/>
+              <img src={tracker} alt="" className="lg:w-fit w-15" />
 
-              <img src={epump} alt="" />
+              <img src={epump} alt=""  className="lg:w-fit w-15"/>
             </div>
           </div>
 

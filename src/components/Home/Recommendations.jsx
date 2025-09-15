@@ -25,7 +25,7 @@ export default function Recommendations({ isRounded = true }) {
     >
       {error}
       <section className="wrapper space-y-10">
-        <div>
+        <div className="comment-tag">
           <h1 className=" [ lg:text-[2.5rem] text-[2.1rem] ] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">
             Don’t take my words <br className="" /> for it.
           </h1>

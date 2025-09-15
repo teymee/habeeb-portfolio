@@ -22,14 +22,14 @@ export default function Footer() {
 
   return (
     <section
-      className={`bg-black-700  py-20 bg-[url(@/assets/svg/noise.svg)] ${
+      className={`bg-black-700 footer py-20 bg-[url(@/assets/svg/noise.svg)] ${
         !applyRadius ? "rounded-t-2xl" : undefined
       }`}
     >
       <section className="wrapper bg-black-800 rounded-xl space-y-10 py-10 flex flex-col justify-center">
-        <div className="text-center   text-white w-full [ lg:text-[72px] text-[40px] ] [ lg:leading-20 leading-13 ]">
+        <div className="text-center tagline   text-white w-full [ lg:text-[72px] text-[40px] ] [ lg:leading-20 leading-13 ]">
           <h1 className="font-thin">Let's create something amazing</h1>
-          <h1 className="font-semibold">together!</h1>
+          <h2 className="font-semibold">together!</h2>
 
           <button
             onClick={handleContactModal}
@@ -40,7 +40,7 @@ export default function Footer() {
           </button>
         </div>
 
-        <div className="border-b border-white-300  overflow-y-hidden  [ lg:h-[100px] h-[37px] ] ">
+        <div className="border-b border-white-300  overflow-y-hidden  [ lg:h-[100px] h-[37px] ] faded-text ">
           <h1 className="text-center  text-white-300 opacity-70 font-semibold  [ lg:text-[100px] text-[38px] ] ">
             Habeeb Abdullahi.
           </h1>

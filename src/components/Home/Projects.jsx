@@ -93,7 +93,7 @@ export default function Projects() {
   return (
     <section className="wrapper global-gap space-y-10 relative">
       {/* 🚨 header  */}
-      <section className="justify-between font-thin flex items-center">
+      <section className="justify-between font-thin flex items-center  selected-project">
         <h1 className="[ lg:text-[40px] text-[30px] ] lg:leading-12 text-black-200">
           Selected <br />
           <span className="font-bold"> Projects </span>

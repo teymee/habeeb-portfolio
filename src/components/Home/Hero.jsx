@@ -17,7 +17,13 @@ import { SplitText } from "gsap/all";
 
 export default function Hero() {
   useGSAP(() => {
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom bottom",
+      },
+    });
 
     const titleSplit = SplitText.create(".title", {
       type: "words",
@@ -52,7 +58,67 @@ export default function Hero() {
       },
       "-=1"
     );
-  });
+
+    const splits = {
+      title: SplitText.create(".title", {
+        type: "words",
+      }),
+
+      nicheHI: SplitText.create(".niche h1", { type: "words" }).words,
+      selectedProject: SplitText.create(".selected-project h1", {
+        type: "words",
+      }).words,
+      projectShots: SplitText.create(".project-shots h1", {
+        type: "words",
+      }).words,
+      taglineh1: SplitText.create(".tagline h1", {
+        type: "words",
+      }).words,
+      taglineh2: SplitText.create(".tagline h2", {
+        type: "words",
+      }).words,
+      commentTag: SplitText.create(".comment-tag h1", {
+        type: "words",
+      }).words,
+      fadedText: SplitText.create(".faded-text h1", {
+        type: "words",
+      }).words,
+         workHeader: SplitText.create(".faded-text h1", {
+        type: "words",
+      }).words,
+    };
+
+    const animateText = (section, trigger) => {
+      return gsap.from(section, {
+        ...aniStyle,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger,
+          start: "top center",
+          end: "bottom center",
+        },
+      });
+    };
+
+    const {
+      nicheHI,
+      selectedProject,
+      projectShots,
+      taglineh1,
+      taglineh2,
+      commentTag,
+      fadedText,
+      workHeader
+    } = splits;
+    animateText(nicheHI, ".niche");
+    animateText(selectedProject, ".selected-project");
+    animateText(projectShots, ".project-shots");
+    animateText(taglineh1, ".tagline");
+    animateText(taglineh2, ".tagline");
+    animateText(commentTag, ".comment-tag");
+    animateText(fadedText, ".tagline");
+    animateText(workHeader, ".work-header");
+  }, []);
   return (
     <section>
       {/* 🚨 Hero  */}
@@ -78,9 +144,9 @@ export default function Hero() {
       {/*  */}
 
       {/* 🚨 Niche  */}
-      <section className="wrapper global-gap space-y-4">
+      <section className="wrapper global-gap space-y-4 niche">
         <h1 className="text-black-200 text-[32px] font-semibold [ lg:w-[40%] ] ">
-          I’ve been in various{" "}
+          I've been in various{" "}
           <span className="text-black">niches and domains, working </span>
           with design:
         </h1>

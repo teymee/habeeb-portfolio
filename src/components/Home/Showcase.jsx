@@ -38,7 +38,7 @@ export default function Showcase() {
   return (
     <section className="">
       {/* 🚨 header  */}
-      <section className="wrapper justify-between flex items-center">
+      <section className="wrapper justify-between flex items-center project-shots">
         <h1 className=" [ lg:text-[2.5rem] text-[2rem] ] leading-12 font-thin text-black-200">
           Shots from many other
           <br />

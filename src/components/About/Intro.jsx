@@ -1,50 +1,26 @@
-import React, { useEffect, useState } from "react";
+
 
 // 🚨 assets
 import arrow from "@/assets/svg/left-arrow.svg";
 
-
-import { sanityClient } from "@/sanity/client";
 import { Link } from "react-router-dom";
 import { urlFor } from "@/utils";
 
-export default function Intro() {
-  const [services, setServices] = useState(null);
-  const [about, setAbout] = useState(null);
-
-  useEffect(() => {
-    const query = `{
-    "services":*[_type == "superPowers"  ],
-    "about": *[_type == "about" ]
-    }`;
-
-    sanityClient
-      .fetch(query)
-      .then((data) => {
-        setServices(data?.services);
-        setAbout(data?.about?.[0]?.about);
-      })
-      .catch(console.error);
-  }, []);
-
+export default function Intro({ services, about }) {
   let img1 = urlFor(about?.img1?.asset?._ref);
   let img2 = urlFor(about?.img2?.asset?._ref);
   let img3 = urlFor(about?.img3?.asset?._ref);
   let mainImg = urlFor(about?.mainImage?.asset?._ref);
 
-
-
   return (
     <section>
-      {
-        !about && <p>Loading...</p>
-      }
+      {!about && <p>Loading...</p>}
       {about && (
         <section className="space-y-10">
           {/* 🚨 about  */}
           <section className="w-[95%] space-y-10 mx-auto">
             <div className=" [ lg:space-y-10 space-y-6 ]  text-black-400">
-              <h1 className=" [ lg:text-[6rem] text-[32px] ]  [ lg:leading-24 leading-9 ]  lg:w-10/12">
+              <h1 className=" [ lg:text-[6rem] text-[32px] ]  [ lg:leading-24 leading-9 ] about-header lg:w-10/12">
                 {about?.title}
               </h1>
 

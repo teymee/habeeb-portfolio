@@ -1,5 +1,7 @@
 import { sanityClient } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -18,4 +20,19 @@ export const textAnimation = {
   duration: 1,
   ease: "power2",
   stagger: 0.1,
+};
+
+export const animateText = (section, trigger) => {
+  return gsap.from(section, {
+    ...textAnimation,
+    scrollTrigger: {
+      trigger,
+      marker: true,
+      start: "top center",
+      end: "bottom center",
+    },
+  });
+};
+export const splitWords = (tag, split) => {
+  return SplitText.create(tag, { type: "words" })[split ?? 'words'];
 };

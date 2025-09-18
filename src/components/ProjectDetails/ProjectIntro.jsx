@@ -58,8 +58,8 @@ export default function ProjectIntro({ details }) {
 
         {/* 🚨 name  */}
         <div className="text-black-400 space-y-8 mt-20">
-          <h5 className="text-size20 font-medium">{tag}</h5>
-          <h1 className="[ lg:text-size103 text-size40 ]    [ w-[30%] lg:leading-28 leading-14 ]">
+          <h5 className="text-size20 font-medium tag">{tag}</h5>
+          <h1 className="[ lg:text-size103 text-size40 ]    [ w-[30%] lg:leading-28 leading-14 ] name">
             {name}
           </h1>
         </div>

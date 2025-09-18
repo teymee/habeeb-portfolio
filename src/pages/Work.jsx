@@ -5,6 +5,10 @@ import ProjectCard from "@/components/UI/Cards/ProjectCard";
 
 import { Link } from "react-router-dom";
 import { ProjectContext } from "@/context/ProjectContext";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
+import { textAnimation } from "@/utils";
 
 export default function Work() {
   const { projects, fetchProject, isLoading } = useContext(ProjectContext);
@@ -55,10 +59,51 @@ export default function Work() {
     ];
   }, [projects]);
 
+  const animateText = (section, trigger) => {
+    return gsap.from(section, {
+      ...textAnimation,
+      scrollTrigger: {
+        trigger,
+        marker: true,
+        start: "top center",
+        end: "bottom center",
+      },
+    });
+  };
+
+  useGSAP(() => {
+    const tags = {
+      header: SplitText.create(".work-header", { type: "words" }).words,
+    };
+
+    const { header } = tags;
+    animateText(header, ".work-header");
+  }, []);
+
+  useGSAP(() => {
+    if (works?.length > 0) {
+      const projectCards = gsap.utils.toArray(".project-card");
+      gsap.set(projectCards, { autoAlpha: 0, y: 100 });
+      projectCards.forEach((card) => {
+        gsap.to(card, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: card,
+            start: "top center",
+            end: "bottom center",
+            toggleActions:"restart reverse play none"
+          },
+        });
+      });
+    }
+  }, [works]);
+
   return (
     <section className="wrapper py-10 [ lg:space-y-10 space-y-4 ] ">
-      <div className="work-header ">
-        <h1 className=" [ lg:text-[6rem] text-[34px] ] [ lg:leading-24 leading-10 ] text-[#333333]   [ lg:w-[70%] w-[90%] ]">
+      <div className="">
+        <h1 className=" work-header  [ lg:text-[6rem] text-[34px] ] [ lg:leading-24 leading-10 ] text-[#333333]   [ lg:w-[70%] w-[90%] ]">
           Creating next level digital products
         </h1>
       </div>
@@ -85,7 +130,7 @@ export default function Work() {
       </section>
       {/*  */}
 
-      {isLoading && <p className="text-center"> Loading...</p>}
+      {isLoading && <p className="text-center h-[50vh] "> Loading...</p>}
 
       {!isLoading && (
         <section>

@@ -4,8 +4,12 @@ import React from "react";
 import WorkExperience from "@/components/About/WorkExperience";
 import Recommendations from "@/components/Home/Recommendations";
 import Intro from "@/components/About/Intro";
+import { useGSAP } from "@gsap/react";
 
 export default function About() {
+  useGSAP(()=>{
+
+  },[])
   return (
     <section>
       <section className="wrapper py-10 space-y-20 ">

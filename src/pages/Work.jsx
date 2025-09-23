@@ -101,7 +101,7 @@ export default function Work() {
   }, [works]);
 
   return (
-    <section className="wrapper py-10 [ lg:space-y-10 space-y-4 ] ">
+    <section className="wrapper py-10 [ lg:space-y-6 space-y-4 ] ">
       <div className="">
         <h1 className=" work-header  [ lg:text-[6rem] text-[34px] ] [ lg:leading-24 leading-10 ] text-[#333333]   [ lg:w-[70%] w-[90%] ]">
           Creating next level digital products

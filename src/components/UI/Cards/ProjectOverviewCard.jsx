@@ -18,7 +18,7 @@ export default function ProjectOverviewCard({
 }) {
   const { isLargeScreen } = useWindowSize();
   return (
-    <section className=" bg-black-600 border w-full border-white-100 lg:min-h-[90vh]  flex flex-col items-center justify-center py-10 space-y-8 [ lg:rounded-4xl rounded-2xl  ]">
+    <section className=" bg-black-600 border w-full border-white-100 min-h-[90vh]  flex flex-col items-center justify-center py-10 space-y-8 [ lg:rounded-4xl rounded-2xl  ]">
       <div className="flex flex-col justify-center items-center">
         <img src={app} alt="" className=" [ lg:w-full w-[70%] ] " />
         <img src={logo} alt="" className="w-[100px] " />

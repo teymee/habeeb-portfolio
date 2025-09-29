@@ -17,8 +17,12 @@
 body {
   margin: 0;
 }
+.carousel:hover .comment-carousel {
+  animation-play-state: paused;
+}
 .comment-carousel {
-  animation: comments 140s linear infinite;
+  will-change: transform;
+  animation: comments 30s linear infinite;
 }
 
 .intro .desc {
@@ -32,7 +36,8 @@ body {
     transform: translateX(0%);
   }
   to {
-    transform: translateX(-100%);
+    /* transform: translateX(-50%); */
+    transform: translateX(calc(-100% / 2));
   }
 }
 

@@ -31,7 +31,17 @@ export default function Recommendations({ isRounded = true }) {
           </h1>
         </div>
 
-        <section className="overflow-x-scroll hide-scrollbar  ">
+        <section className="max-w-[100%]  overflow-hidden py-4 carousel ">
+          <section className=" comment-carousel w-fit flex gap-x-8">
+            {!isLoading &&
+              comments &&
+              [...comments, ...comments]?.map((comment, index) => {
+                return <Comment {...comment} key={index} />;
+              })}
+          </section>
+        </section>
+
+        {/* <section className="overflow-x-scroll hide-scrollbar  ">
           <section className="w-fit">
             <section className="w-fit flex items-center gap-x-8 m-w-max comment-carousel">
               {!isLoading &&
@@ -41,7 +51,7 @@ export default function Recommendations({ isRounded = true }) {
                 })}
             </section>
           </section>
-        </section>
+        </section> */}
       </section>
     </section>
   );

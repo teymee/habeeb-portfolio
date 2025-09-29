@@ -15,7 +15,7 @@ export default function Comment({
 }) {
   const avatar = urlFor(image?.asset?._ref)
   return (
-    <section className=" relative  rounded-xl bg-black-1000 [ lg:h-[530px] h-[430px] ]  [ lg:w-[420px]  min-w-[350px] ] ">
+    <section className=" relative  rounded-xl bg-black-1000 [ lg:h-[530px] h-[430px] ]  [ lg:w-[420px]  w-[350px] ] ">
       <img src={quote} alt="" className="absolute top-10 right-4" />
       <section className=" wrapper pt-20 pb-8 flex flex-col h-full justify-between">
         <div className="text-black-50  w-11/12 font-medium [ lg:text-base text-sm ]">

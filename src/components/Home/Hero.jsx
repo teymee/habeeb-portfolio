@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 // 🚨 assets
 import avatar from "@/assets/svg/avatar.svg";
@@ -16,16 +16,19 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 
 export default function Hero() {
+  const targetRef = useRef(null);
   useGSAP(() => {
+    if (!targetRef.current) return;
+
     const tl = gsap.timeline();
 
     const titleSplit = SplitText.create(".title", {
       type: "words",
     });
     const desc = SplitText.create(".desc", {
-      type: "lines",
-      linesClass: "line-overflow",
-      mask: "lines",
+      type: "words",
+      // linesClass: "line-overflow",
+      // mask: "lines",
     });
 
     const aniStyle = {
@@ -34,7 +37,7 @@ export default function Hero() {
       duration: 1,
       ease: "power2",
     };
-    tl.from(".avatar", { autoAlpha: 0, y: 50, duration: 1.5 });
+    tl.from(".avatar", { opacity: 0, y: 100, duration: 1, ease: "power2" });
     tl.from(titleSplit.words, { ...aniStyle, stagger: 0.1 }, "-=0.3");
     tl.from(
       ".short-desc",
@@ -45,42 +48,13 @@ export default function Hero() {
     );
 
     tl.from(
-      desc.lines,
+      desc.words,
       {
         ...aniStyle,
         stagger: 0.1,
       },
       "-=1"
     );
-
-    const splits = {
-      title: SplitText.create(".title", {
-        type: "words",
-      }),
-
-      nicheHI: SplitText.create(".niche h1", { type: "words" }).words,
-      selectedProject: SplitText.create(".selected-project h1", {
-        type: "words",
-      }).words,
-      projectShots: SplitText.create(".project-shots h1", {
-        type: "words",
-      }).words,
-      taglineh1: SplitText.create(".tagline h1", {
-        type: "words",
-      }).words,
-      taglineh2: SplitText.create(".tagline h2", {
-        type: "words",
-      }).words,
-      commentTag: SplitText.create(".comment-tag h1", {
-        type: "words",
-      }).words,
-      fadedText: SplitText.create(".faded-text h1", {
-        type: "words",
-      }).words,
-         workHeader: SplitText.create(".work-header h1", {
-        type: "words",
-      }).words,
-    };
 
     const animateText = (section, trigger) => {
       return gsap.from(section, {
@@ -94,29 +68,63 @@ export default function Hero() {
       });
     };
 
-    const {
-      nicheHI,
-      selectedProject,
-      projectShots,
-      taglineh1,
-      taglineh2,
-      commentTag,
-      fadedText,
-      workHeader
-    } = splits;
-    animateText(nicheHI, ".niche");
-    animateText(selectedProject, ".selected-project");
-    animateText(projectShots, ".project-shots");
-    animateText(taglineh1, ".tagline");
-    animateText(taglineh2, ".tagline");
-    animateText(commentTag, ".comment-tag");
-    animateText(fadedText, ".tagline");
-    animateText(workHeader, ".work-header");
+    document.fonts.ready.then(() => {
+      const splits = {
+        title: SplitText.create(".title", {
+          type: "words",
+        }),
+
+        nicheHI: SplitText.create(".niche h1", { type: "words" }).words,
+        selectedProject: SplitText.create(".selected-project h1", {
+          type: "words",
+        }).words,
+        projectShots: SplitText.create(".project-shots h1", {
+          type: "words",
+        }).words,
+        taglineh1: SplitText.create(".tagline h1", {
+          type: "words",
+        }).words,
+        taglineh2: SplitText.create(".tagline h2", {
+          type: "words",
+        }).words,
+        commentTag: SplitText.create(".comment-tag h1", {
+          type: "words",
+        }).words,
+        fadedText: SplitText.create(".faded-text h1", {
+          type: "words",
+        }).words,
+        workHeader: SplitText.create(".work-header h1", {
+          type: "words",
+        }).words,
+      };
+
+      const {
+        nicheHI,
+        selectedProject,
+        projectShots,
+        taglineh1,
+        taglineh2,
+        commentTag,
+        fadedText,
+        workHeader,
+      } = splits;
+      animateText(nicheHI, ".niche");
+      animateText(selectedProject, ".selected-project");
+      animateText(projectShots, ".project-shots");
+      animateText(taglineh1, ".tagline");
+      animateText(taglineh2, ".tagline");
+      animateText(commentTag, ".comment-tag");
+      animateText(fadedText, ".tagline");
+      animateText(workHeader, ".work-header");
+    });
   }, []);
   return (
     <section>
       {/* 🚨 Hero  */}
-      <section className="h-screen hero items-center w-full bg-[url(@/assets/svg/hero-bg.svg)] bg-cover flex flex-col justify-center space-y-4 [ lg:mt-[-10px] ]">
+      <section
+        ref={targetRef}
+        className=" [ lg:h-screen h-[75vh] ]  hero items-center w-full bg-[url(@/assets/svg/hero-bg.svg)] bg-cover flex flex-col justify-center space-y-4 [ lg:mt-[-10px] ]"
+      >
         <div className="flex justify-center avatar">
           <img src={avatar} alt="" className="[ lg:w-full w-[8rem] ]" />
         </div>
@@ -128,9 +136,10 @@ export default function Hero() {
           <h4 className="text-size20  mt-[-20px] short-desc">
             A designer who makes ideas click.
           </h4>
-          <p className="text-center text-black-300 mt-4 [ lg:w-full w-[95%] ] [ lg:text-lg text-md ] font-medium mx-auto desc">
+          <p className="text-center text-black-300 mt-4 [ lg:w-full w-11/12  ] [ lg:text-lg text-md ] font-medium mx-auto desc">
             Helping businesses scale with design that speaks clearly, performs
-            effortlessly, <br  />
+            effortlessly,
+            <br className="lg:block hidden" />
             and delivers measurable value.
           </p>
         </div>
@@ -156,10 +165,10 @@ export default function Hero() {
 
             <div className="flex lg:gap-x-6 gap-x-4">
               <img src={ap} alt="" className="lg:w-fit w-8" />
-              <img src={fm} alt="" className="lg:w-fit w-10"/>
+              <img src={fm} alt="" className="lg:w-fit w-10" />
               <img src={tracker} alt="" className="lg:w-fit w-15" />
 
-              <img src={epump} alt=""  className="lg:w-fit w-15"/>
+              <img src={epump} alt="" className="lg:w-fit w-15" />
             </div>
           </div>
 

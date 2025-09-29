@@ -18,7 +18,7 @@ export default function ReadCV() {
               className="text-black"
             >
               <div className="pt-8 z-30 relative">
-                <h1 className=" [ lg:text-2xl text-base ] [ lg:font-normal font-medium ]">
+                <h1 className=" [ lg:text-2xl text-base ] [ lg:font-normal font-medium ] text-black">
                   Product design resume
                 </h1>
                 <div className="flex gap-x-4 items-center text-base font-medium">

@@ -1,42 +1,46 @@
 import ProjectIntro from "@/components/ProjectDetails/ProjectIntro";
 import Snippet from "@/components/ProjectDetails/Snippet";
 import Tagline from "@/components/ProjectDetails/Tagline";
+import { ProjectContext } from "@/context/ProjectContext";
 import { sanityClient } from "@/sanity/client";
 import { animateText, splitWords, urlFor } from "@/utils";
 import { useGSAP } from "@gsap/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function ProjectDetails() {
   const { id } = useParams();
 
+  const { fetchProject, isLoading } = useContext(ProjectContext);
+
   const [details, setDetails] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isDetailsLoading, setIsDetailsLoading] = useState(false);
 
   useEffect(() => {
     const query = `*[_type == "projects" && _id == $id][0]`;
     const params = { id };
-    setIsLoading(true);
+    fetchProject();
+    setIsDetailsLoading(true);
+
     sanityClient
       .fetch(query, params)
       .then((data) => setDetails(data))
       .catch(console.error)
-      .finally(() => setIsLoading(false));
+      .finally(() => setIsDetailsLoading(false));
   }, [id]);
 
   useGSAP(() => {
-    if (isLoading) return;
+    if (isDetailsLoading) return;
 
     const tags = {
       tag: splitWords(".tag"),
       name: splitWords(".name"),
-      
     };
 
     const { tag, name } = tags;
     animateText(tag, ".tag");
     animateText(name, ".name");
-  }, [isLoading]);
+  }, [isDetailsLoading]);
 
   return (
     <>
@@ -66,7 +70,7 @@ export default function ProjectDetails() {
             </section>
           )}
           {/*  */}
-          <Snippet details={details} />
+          {!isLoading && <Snippet details={details} />}
         </section>
       )}
     </>

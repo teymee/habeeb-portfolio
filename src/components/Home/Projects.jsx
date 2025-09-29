@@ -12,6 +12,7 @@ import { urlFor } from "@/utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import useWindowSize from "@/hooks/useWindowSize";
 
 export default function Projects() {
   const { fetchProject, projects, isLoading } = useContext(ProjectContext);
@@ -30,6 +31,8 @@ export default function Projects() {
     cardsRef.current = [];
   }, [projects]);
 
+  const { isLargeScreen } = useWindowSize();
+
   useGSAP(() => {
     if (!mounted || isLoading || !projects || projects.length === 0) return;
     const cards = cardsRef.current.filter(Boolean);
@@ -47,22 +50,35 @@ export default function Projects() {
       if (!card || !card.parentNode) return;
       const animation = gsap.to(card, {
         scale: 0.8 + 0.2 * (i / cards?.length - 1),
+
         scrollTrigger: {
           trigger: card,
           start: `top ${15 + 35 * i}`,
-          end: "bottom bottom",
+          end: !isLargeScreen ? "bottom 70%" : "bottom bottom",
           endTrigger: ".project-container",
           pin: true,
           pinSpacing: false,
           scrub: 1,
           invalidateOnRefresh: true,
-          id: `project-card-${i}`, // Add unique identifier
-          onRefresh: () => {
-            // Check if element still exists when refreshing
-            if (!card.parentNode) {
-              ScrollTrigger.getById(`card-${i}`)?.kill();
-            }
-          },
+          id: `project-card-${i}`,
+          anticipatePin: !isLargeScreen ? 0 : 1, // Better mobile performance
+          refreshPriority: !isLargeScreen ? -1 : 0, // Lower priority on mobile
+
+          // trigger: card,
+          // start: `top ${15 + 35 * i}`,
+          // end: "bottom bottom",
+          // endTrigger: ".project-container",
+          // pin: true,
+          // pinSpacing: false,
+          // scrub: 1,
+          // invalidateOnRefresh: true,
+          // id: `project-card-${i}`, // Add unique identifier
+          // onRefresh: () => {
+          //   // Check if element still exists when refreshing
+          //   if (!card.parentNode) {
+          //     ScrollTrigger.getById(`card-${i}`)?.kill();
+          //   }
+          // },
           // markers: true,
         },
       });
@@ -116,13 +132,13 @@ export default function Projects() {
         {!isLoading &&
           projects &&
           [...projects]?.slice(0, 3)?.map((pro, index) => {
-            const { appLock, tag, overview, industry, imagePreview, _id } =
+            const { appLock, tag, cardOverview, industry, imagePreview, _id } =
               pro ?? {};
             const details = {
               app: urlFor(imagePreview?.asset?._ref),
               logo: appLock,
               name: tag,
-              desc: overview,
+              desc: cardOverview,
               tags: industry,
               id: _id,
             };

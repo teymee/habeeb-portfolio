@@ -6,7 +6,7 @@ export default function TagSection({ title, subtitle, excerpt, listArr }) {
 
   return (
     <section>
-      <section className="border-b border-b-black-200  [ lg:pb-10 pb-8 ] ">
+      <section className="border-b border-b-black-200  [ lg:pb-10 pb-4 ] ">
         <div className={`${isShort ? "w-fit" : "[ lg:w-[50%] w-[70%] ]"}`}>
           <h1
             className={` header-style flex gap-x-4 ${

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   font-family: "Public Sans", sans-serif;
-
+  font-kerning: normal !important;
   font-weight: 400;
 
   /* color-scheme: light dark;
@@ -19,6 +19,12 @@ body {
 }
 .comment-carousel {
   animation: comments 140s linear infinite;
+}
+
+.intro .desc {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 @keyframes comments {

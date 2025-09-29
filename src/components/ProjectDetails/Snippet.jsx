@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import epump from "@/assets/svg/epump-snip.svg";
-// import youtube from "@/assets/svg/youtube.svg";
 import { urlFor } from "@/utils";
+import { ProjectContext } from "@/context/ProjectContext";
+import { Link } from "react-router-dom";
 export default function Snippet({ details }) {
   const { prototype, testimonial } = details ?? {};
   const prototypeImage = urlFor(prototype?.asset?._ref);
 
   const videoId = testimonial.split("v=")[1]?.split("&")[0];
+
+  const { projects } = useContext(ProjectContext);
+
+  let nextProject;
+  if (projects && projects?.length > 0) {
+    let avaliableProjects = projects.filter(
+      (project) => project._id !== details._id
+    );
+
+    nextProject =
+      avaliableProjects[Math.floor(Math.random() * avaliableProjects.length)];
+  }
+  console.log(nextProject, "mmm");
   return (
     <section className="space-y-10">
       <section className="wrapper space-y-10">
@@ -20,7 +33,11 @@ export default function Snippet({ details }) {
         {/* 🚨 prototype  */}
 
         <section className="w-full ">
-          <img src={prototypeImage} alt="" className="w-full h-[800px] object-cover" />
+          <img
+            src={prototypeImage}
+            alt=""
+            className="w-full h-[800px] object-cover"
+          />
         </section>
       </section>
 
@@ -64,11 +81,17 @@ export default function Snippet({ details }) {
           <h4 className="text-black-500/20 text-size24">Next project</h4>
           <h1 className=" [ lg:text-[4.5rem] text-[2rem] ] text-white">
             {" "}
-            Epump station
+            {nextProject?.name}
           </h1>
 
           <div className="overflow-y-hidden lg:mt-10">
-            <img src={epump} alt="" className="w-[600px] h-[20.75rem]" />
+            <Link to={`/project-details/${nextProject?._id}`}>
+              <img
+                src={urlFor(nextProject?.bgImage?.asset?._ref)}
+                alt=""
+                className="w-[37.5rem] lg:h-[30.75rem] h-[20rem] rounded-2xl object-fit lg:mt-0 mt-10"
+              />
+            </Link>
           </div>
         </section>
       </section>

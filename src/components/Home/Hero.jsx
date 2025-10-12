@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 // 🚨 assets
-import avatar from "@/assets/svg/avatar.svg";
+import avatar from "@/assets/svg/hero-avatar.svg";
 import fm from "@/assets/svg/fm.svg";
 import tracker from "@/assets/svg/tracker.svg";
 import epump from "@/assets/svg/epump.svg";
@@ -126,7 +126,7 @@ export default function Hero() {
         className=" [ lg:h-screen h-[75vh] ]  hero items-center w-full bg-[url(@/assets/svg/hero-bg.svg)] bg-cover flex flex-col justify-center space-y-4 [ lg:mt-[-10px] ]"
       >
         <div className="flex justify-center avatar">
-          <img src={avatar} alt="" className="[ lg:w-full w-[8rem] ]" />
+          <img src={avatar} alt="" className="[ lg:w-[7.5rem] w-[8rem] ]" />
         </div>
 
         <div className="space-y-4 text-center intro">

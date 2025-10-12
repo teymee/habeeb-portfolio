@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 
 export const ProjectContext = createContext({
   projects: null,
-  isLoading: false,
+  isLoading: true,
   error: null,
   fetchProject: () => {},
 });
@@ -11,7 +11,7 @@ export const ProjectContext = createContext({
 export const ProjectProvider = ({ children }) => {
   const [projects, setProject] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchProject = () => {
     setIsLoading(true);

@@ -8,6 +8,7 @@ import { animateText, splitWords } from "@/utils";
 import React, { useEffect, useState } from "react";
 
 import { sanityClient } from "@/sanity/client";
+import Loader from "@/components/Loader";
 
 export default function About() {
   const [services, setServices] = useState(null);
@@ -28,7 +29,11 @@ export default function About() {
         setAbout(data?.about?.[0]?.about);
       })
       .catch(console.error)
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500);
+      });
   }, []);
 
   useGSAP(() => {
@@ -42,9 +47,7 @@ export default function About() {
   }, [isLoading]);
   return (
     <>
-      {isLoading && (
-        <p className="text-center h-screen vertical-center "> Loading...</p>
-      )}
+      {isLoading && <Loader />}
 
       {!isLoading && (
         <section>

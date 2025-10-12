@@ -1,3 +1,4 @@
+import Loader from "@/components/Loader";
 import ProjectIntro from "@/components/ProjectDetails/ProjectIntro";
 import Snippet from "@/components/ProjectDetails/Snippet";
 import Tagline from "@/components/ProjectDetails/Tagline";
@@ -14,7 +15,7 @@ export default function ProjectDetails() {
   const { fetchProject, isLoading } = useContext(ProjectContext);
 
   const [details, setDetails] = useState(null);
-  const [isDetailsLoading, setIsDetailsLoading] = useState(false);
+  const [isDetailsLoading, setIsDetailsLoading] = useState(true);
 
   useEffect(() => {
     const query = `*[_type == "projects" && _id == $id][0]`;
@@ -26,7 +27,11 @@ export default function ProjectDetails() {
       .fetch(query, params)
       .then((data) => setDetails(data))
       .catch(console.error)
-      .finally(() => setIsDetailsLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setIsDetailsLoading(false);
+        }, 1500);
+      });
   }, [id]);
 
   useGSAP(() => {
@@ -44,11 +49,9 @@ export default function ProjectDetails() {
 
   return (
     <>
-      {!details && (
-        <p className="text-center h-screen vertical-center "> Loading...</p>
-      )}
+      {isDetailsLoading && <Loader />}
 
-      {details && (
+      {!isDetailsLoading && (
         <section className="space-y-40 overflow-x-hidden">
           <ProjectIntro details={details} />
           <Tagline details={details} />

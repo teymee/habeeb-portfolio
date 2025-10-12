@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import { textAnimation } from "@/utils";
+import Loader from "@/components/Loader";
 
 export default function Work() {
   const { projects, fetchProject, isLoading } = useContext(ProjectContext);
@@ -93,7 +94,7 @@ export default function Work() {
             trigger: card,
             start: "top center",
             end: "bottom center",
-            toggleActions:"restart reverse play none"
+            toggleActions: "restart reverse play none",
           },
         });
       });
@@ -130,14 +131,14 @@ export default function Work() {
       </section>
       {/*  */}
 
-      {isLoading && <p className="text-center h-[50vh] "> Loading...</p>}
+      {isLoading && <Loader/>}
 
       {!isLoading && (
         <section>
           {/* 🚨 works  */}
-          <section>
+          <section className="lg:mt-[-50px] ">
             {works?.length > 0 && (
-              <section className="grid [ lg:grid-cols-2 grid-cols-1 ] [ lg:w-[80%] w-[95%] ]  mx-auto global-gap space-y-4">
+              <section className=" grid [ lg:grid-cols-2 grid-cols-1 ] [ lg:w-[80%] w-[95%] ]  mx-auto global-gap space-y-4">
                 {works?.map((project, index) => {
                   return (
                     <div

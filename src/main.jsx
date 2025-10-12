@@ -10,6 +10,6 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ProjectProvider>
       <App />
-    </ProjectProvider>
- </StrictMode>
+    </ProjectProvider>{" "}
+  </StrictMode>
 );

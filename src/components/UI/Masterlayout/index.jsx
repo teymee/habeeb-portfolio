@@ -83,7 +83,7 @@ export default function Masterlayout() {
         style={{
           top: isFooter ? "1rem" : "calc(100vh - 2.5rem - 12%)",
         }}
-        className={` transition-all duration-500 ease-in-out fixed w-full z-40`}
+        className={` transition-all duration-500 ease-in-out top-10 fixed w-full z-40`}
       >
         <Navbar />
       </section>

@@ -70,7 +70,7 @@
 }
 
 .wrapper {
-  @apply w-[95%] mx-auto max-w-[1500px];
+  @apply w-[95%] mx-auto max-w-[1300px];
 }
 
 .global-gap {

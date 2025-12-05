@@ -43,8 +43,8 @@ export default function Home() {
       {isLoading && clientLoader && <Loader />}
       <section className="">
         <Hero />
-        {/* <Superpowers />
-        <Clients clientList={clientList} /> */}
+        {/* <Superpowers /> */}
+        <Clients clientList={clientList} />
         <MyProjects />
         <Meetme />
         <Recommendations />

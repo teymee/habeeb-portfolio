@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // 🚨 assets
-import arrowUp from "@/assets/svg/arrow-up.svg";
+import arrowUp from "@/assets/svg/white-arrow.svg";
 import insta from "@/assets/svg/instagram.svg";
 import twitter from "@/assets/svg/twitter.svg";
 import linkedIn from "@/assets/svg/linkedIn.svg";
@@ -22,29 +22,31 @@ export default function Footer() {
 
   return (
     <section
-      className={` footer  ${!applyRadius ? "rounded-t-2xl" : undefined}`}
+      className={`bg-black-700 footer py-20 bg-[url(@/assets/svg/noise.svg)] ${
+        !applyRadius ? "rounded-t-2xl" : undefined
+      }`}
     >
-      <section className="wrapper mb-20 bg-black-600 rounded-xl space-y-10 py-10 flex flex-col justify-center">
-        <div className="text-center tagline   text-black w-full [ lg:text-[72px] text-[28px] ] [ lg:leading-20 leading-10 ]">
+      <section className="wrapper bg-black-800 rounded-xl space-y-10 py-10 flex flex-col justify-center">
+        <div className="text-center tagline   text-white w-full [ lg:text-[72px] text-[28px] ] [ lg:leading-20 leading-10 ]">
           <h1 className="font-thin">Let's create something amazing</h1>
           <h2 className="font-semibold">together!</h2>
 
           <button
             onClick={handleContactModal}
-            className="w-fit mx-auto  cursor-pointer   border-2 border-black-400 rounded-full flex gap-x-2 text-base font-semibold text-black-400 [ lg:mt-10 mt-5 ] [ px-4 lg:py-4  py-3 ]"
+            className="w-fit mx-auto  cursor-pointer   border border-white rounded-full flex gap-x-2 text-base font-semibold text-white [ lg:mt-10 mt-5 ] [ px-4 lg:py-4  py-3 ]"
           >
             <p>Get in touch</p>
             <img src={arrowUp} alt="" />
           </button>
         </div>
 
-        <div className="border-b border-black-600  overflow-y-hidden  [ lg:h-[100px] h-[37px] ] faded-text ">
-          <h1 className="text-center  text-black-2000 opacity-70 font-semibold  [ lg:text-[100px] text-[38px] ] ">
+        <div className="border-b border-white-300  overflow-y-hidden  [ lg:h-[100px] h-[37px] ] faded-text ">
+          <h1 className="text-center  text-white-300 opacity-70 font-semibold  [ lg:text-[100px] text-[38px] ] ">
             Habeeb Abdullahi.
           </h1>
         </div>
 
-        <section className="w-fit lg:mx-auto text-[32px] text-black-400 font-medium flex  gap-x-8 [ lg:flex-row flex-col ] [ lg:items-center items-start ] ">
+        <section className="w-fit lg:mx-auto text-[32px] text-white font-thin flex  gap-x-8 [ lg:flex-row flex-col ] [ lg:items-center items-start ] ">
           <a
             href="https://www.instagram.com/made.by.habscreative/"
             target="_blank"

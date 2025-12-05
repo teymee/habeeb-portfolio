@@ -51,7 +51,7 @@ export default function About() {
 
       {!isLoading && (
         <section>
-          <section className="wrapper py-10 space-y-20 ">
+          <section className="wrapper py-10 space-y-20 mt-20">
             <Intro services={services} about={about} />
           </section>
           <WorkExperience />

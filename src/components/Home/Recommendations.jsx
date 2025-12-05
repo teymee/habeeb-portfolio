@@ -19,14 +19,14 @@ export default function Recommendations({ isRounded = true }) {
 
   return (
     <section
-      className={`bg-black-700 py-20 bg-[url(@/assets/svg/noise.svg)] ${
+      className={` global-gap  bg-[url(@/assets/svg/noise.svg)] ${
         isRounded ? " [ lg:rounded-t-2xl rounded-t-xl ] " : undefined
       }`}
     >
       {error}
-      <section className="wrapper space-y-10">
+      <section className="w-11/12 mx-auto space-y-10">
         <div className="comment-tag">
-          <h1 className=" [ lg:text-[2.5rem] text-[2.1rem] ] text-black-500/20 font-semibold [ lg:leading-10 leading-10 ]  ">
+          <h1 className=" [ lg:text-[2.5rem] text-[2.1rem] ] text-black-400 font-semibold [ lg:leading-10 leading-10 ]  ">
             Don’t take my words <br className="" /> for it.
           </h1>
         </div>
@@ -40,18 +40,6 @@ export default function Recommendations({ isRounded = true }) {
               })}
           </section>
         </section>
-
-        {/* <section className="overflow-x-scroll hide-scrollbar  ">
-          <section className="w-fit">
-            <section className="w-fit flex items-center gap-x-8 m-w-max comment-carousel">
-              {!isLoading &&
-                comments &&
-                [...comments, ...comments]?.map((comment, index) => {
-                  return <Comment {...comment} key={index} />;
-                })}
-            </section>
-          </section>
-        </section> */}
       </section>
     </section>
   );

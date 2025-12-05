@@ -1,7 +1,7 @@
 import React from "react";
 
 import quote from "@/assets/svg/quote.svg";
-import linkedIn from "@/assets/svg/linkedIn.svg";
+import linkedIn from "@/assets/svg/white-linkedin.svg";
 import arrow from "@/assets/svg/white-arrow.svg"
 import { urlFor } from "@/utils";
 

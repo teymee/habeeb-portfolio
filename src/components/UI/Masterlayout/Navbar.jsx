@@ -79,7 +79,7 @@ export default function Navbar() {
     }
   };
   return (
-    <nav className="[ lg:w-[40%] w-[95%] ] [ px-4 lg:px-0 ] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
+    <nav className="[ lg:w-[45%] w-[95%] ] [ px-4 lg:px-0 ] mx-auto rounded-full max-w-[1500px]  shadow-lg bg-white-200">
       <section className="flex justify-between [ lg:px-8 px-4 ] ">
         {navs.map(({ activeIcon, icon, name, link }) => {
           let isActive;
@@ -94,7 +94,7 @@ export default function Navbar() {
             <div
               key={name}
               //  first:rounded-bl-4xl
-              className={` cursor-pointer transition-all lg:px-6 duration-150 flex flex-col items-center gap-y-2 font-medium mb-[-1px] [ lg:py-6  py-4 ]    ${
+              className={` cursor-pointer transition-all lg:px-6 duration-150 flex flex-col items-center gap-y-2 font-medium mb-[-1px] [ lg:py-5  py-4 ]    ${
                 isActive
                   ? "text-green-100 border-b-4 border-green-100  "
                   : "text-black-200"

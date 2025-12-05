@@ -7,10 +7,10 @@
   --font-Manrope: "Manrope", sans-serif;
 
   /* TEXT SIZE  */
-  --text-size20: 1.25rem;
-  --text-size24: 1.5rem;
+  --text-size20: 20px;
+  --text-size24: 24px;
   --text-size40: 2.5rem;
-  --text-size103: 6.4375rem;
+  --text-size103: 103px;
 
   /* 🚨COLORS  */
   --color-primary: #edeade;
@@ -70,7 +70,7 @@
 }
 
 .wrapper {
-  @apply w-[90%] mx-auto max-w-[1500px];
+  @apply w-[95%] mx-auto max-w-[1500px];
 }
 
 .global-gap {

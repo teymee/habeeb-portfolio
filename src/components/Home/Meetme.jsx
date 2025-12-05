@@ -1,7 +1,7 @@
 import React from "react";
 
 // 🚨 assets
-import mainImg from "@/assets/svg/habeeb-Img.svg";
+import mainImg from "@/assets/svg/habeeb-img.svg";
 import greenIcon from "@/assets/svg/green-arrow.svg";
 import { Link } from "react-router-dom";
 export default function Meetme() {

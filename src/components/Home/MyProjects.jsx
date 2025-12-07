@@ -127,7 +127,7 @@ export default function MyProjects() {
                 </section>
               )}
 
-              {projects.length < 1 && (
+              {projects?.length < 1 && (
                 <p className="text-3xl text-center w-full py-40">
                   {" "}
                   No available projects{" "}

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import arrow from "@/assets/svg/left-arrow.svg";
 import superPower from "@/assets/svg/superPower.svg";
+import travelApp from  "@/assets/svg/travel-app.svg";
+import ProgressBar from "../UI/ProgressBar";
 
 export default function Superpowers() {
   const [active, setActive] = useState(0);
@@ -19,7 +21,7 @@ export default function Superpowers() {
       skill: "Brand & Graphics design",
       writeUp:
         "Turning ideas into refined product experiences that solve real-world problems.",
-      img: superPower,
+      img: travelApp,
     },
     {
       skill: "Package design & printing",
@@ -31,7 +33,7 @@ export default function Superpowers() {
       skill: "Product management",
       writeUp:
         "Turning ideas into refined product experiences that solve real-world problems.",
-      img: superPower,
+       img: travelApp,
     },
   ];
   return (
@@ -72,30 +74,41 @@ export default function Superpowers() {
             {clipNotes.map(({ skill, writeUp }, index) => {
               const isActive = active === index;
               return (
-                <div
-                  onClick={() => setActive(index)}
-                  className={`bg-white w-full py-10 cursor-pointer`}
-                >
-                  <div className={` w-10/12 mx-auto space-y-3`}>
-                    <h3
-                      className={` font-semibold ${
-                        isActive
-                          ? "text-left text-[19.1px]"
-                          : "text-center text-black-10 text-[19.4px]"
-                      }`}
-                    >
-                      {skill}
-                    </h3>
+                <section className="relative transition-all duration-150">
+                  <div
+                    onClick={() => setActive(index)}
+                    className={`bg-white w-full py-10 cursor-pointer `}
+                  >
+                    <div className={` w-10/12 mx-auto space-y-3`}>
+                      <h3
+                        className={` font-semibold ${
+                          isActive
+                            ? "text-left text-[19.1px]"
+                            : "text-center text-black-10 text-[19.4px]"
+                        }`}
+                      >
+                        {skill}
+                      </h3>
 
-                    <p
-                      className={` ${
-                        isActive ? "block" : "hidden"
-                      } text-black-300 text-base w-10/12 `}
-                    >
-                      {writeUp}
-                    </p>
+                      <p
+                        className={` ${
+                          isActive ? "block" : "hidden"
+                        } text-black-300 text-base w-10/12 `}
+                      >
+                        {writeUp}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                  {isActive && (
+                    <div className=" ">
+                      <ProgressBar
+                        clipNotes={clipNotes}
+                        setActive={setActive}
+                        durationTime={6}
+                      />
+                    </div>
+                  )}
+                </section>
               );
             })}
           </section>
@@ -103,7 +116,7 @@ export default function Superpowers() {
 
           {/* 🚨 display section  */}
           <section className="bg-white w-[60%] flex items-center justify-center">
-            <div className="w-10/12 h-[400px]  flex items-center justify-center">
+            <div className="w-10/12 h-[400px] flex items-center justify-center ">
               <img
                 src={clipNotes[active].img}
                 alt={clipNotes[active].title}

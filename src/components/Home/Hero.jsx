@@ -130,7 +130,7 @@ export default function Hero() {
             />
 
             <p className="text-black-200 font-medium [ lg:text-base text-xs ]">
-              Hi, it's Habeeb, Your product design expert!{" "}
+              Hi, I am Habeeb, Your product design expert!
             </p>
           </section>
 
@@ -159,8 +159,6 @@ export default function Hero() {
         </section>
       </section>
       {/*  */}
-
- 
     </section>
   );
 }

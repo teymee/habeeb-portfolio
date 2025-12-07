@@ -41,17 +41,19 @@ export default function Home() {
   return (
     <section>
       {isLoading && clientLoader && <Loader />}
-      <section className="">
-        <Hero />
-        {/* <Superpowers /> */}
-        <Clients clientList={clientList} />
-        <MyProjects />
-        <Meetme />
-        <Recommendations />
-        <Showcase />
+      {!isLoading && (
+        <section className="">
+          <Hero />
+          <Superpowers />
+          <Clients clientList={clientList} />
+          <MyProjects />
+          <Meetme />
+          <Recommendations />
+          <Showcase />
 
-        {/* <Projects /> */}
-      </section>
+          {/* <Projects /> */}
+        </section>
+      )}
     </section>
   );
 }

@@ -10,6 +10,7 @@ import avatar from "@/assets/svg/hero-avatar.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   const targetRef = useRef(null);
@@ -145,15 +146,19 @@ export default function Hero() {
             </h2>
 
             <div className="flex gap-x-4 items-center w-fit mx-auto">
-              <button className="border [ lg:flex hidden  ]  items-center gap-x-2 rounded-full py-4 px-6 border-black-300 font-medium text-black-300">
-                <span> About me</span>
-                <img src={arrowUp} alt="A link to the about page" />
-              </button>
+              <Link to={`/about`}>
+                <button className=" cursor-pointer border [ lg:flex hidden  ]  items-center gap-x-2 rounded-full py-4 px-6 border-black-300 font-medium text-black-300">
+                  <span> About me</span>
+                  <img src={arrowUp} alt="A link to the about page" />
+                </button>
+              </Link>
 
-              <button className="border  flex items-center gap-x-2 rounded-full py-4 px-6 border-black font-medium text-white bg-black">
-                <span> See projects</span>
-                <img src={whiteArrow} alt="A link to the projects page" />
-              </button>
+              <Link to={`/works`}>
+                <button className=" cursor-pointer border  flex items-center gap-x-2 rounded-full py-4 px-6 border-black font-medium text-white bg-black">
+                  <span> See projects</span>
+                  <img src={whiteArrow} alt="A link to the projects page" />
+                </button>
+              </Link>
             </div>
           </section>
         </section>

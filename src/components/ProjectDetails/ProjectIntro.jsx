@@ -50,7 +50,7 @@ export default function ProjectIntro({ details }) {
       <section className="wrapper  [ lg:space-y-10 space-y-4 ]">
         <div
           onClick={() => navigate(-1)}
-          className="flex gap-x-2 cursor-pointer fixed top-10 bg-white w-fit px-4 py-1 rounded-md"
+          className="flex gap-x-2 cursor-pointer fixed top-10 z-40 bg-white w-fit px-4 py-1 rounded-md"
         >
           <img src={leftArrow} alt="go back" />
           <p>Back</p>

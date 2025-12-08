@@ -138,15 +138,15 @@ export default function Work() {
           {/* 🚨 works  */}
           <section className="lg:mt-[-50px] ">
             {works?.length > 0 && (
-              <section className=" grid [ lg:grid-cols-2 grid-cols-1 ] [ lg:w-[80%] w-[95%] ]  mx-auto global-gap space-y-4">
+              <section className=" grid [ lg:grid-cols-2 grid-cols-1 ] [ lg:w-[85%] w-[95%] ] lg:gap-x-4 mx-auto global-gap space-y-4">
                 {works?.map((project, index) => {
                   return (
                     <div
                       key={index}
-                      className=" even:lg:mt-20 odd:lg:mt-[-40px]"
+                      // className=" even:lg:mt-20 odd:lg:mt-[-40px]"
                     >
                       <Link to={`/project-details/${project?._id}`}>
-                        <ProjectCard {...project} />
+                        <ProjectCard project={project} />
                       </Link>
                     </div>
                   );

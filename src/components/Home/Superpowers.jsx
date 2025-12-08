@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import arrow from "@/assets/svg/left-arrow.svg";
 import superPower from "@/assets/svg/superPower.svg";
-import travelApp from  "@/assets/svg/travel-app.svg";
+import travelApp from "@/assets/svg/travel-app.svg";
 import ProgressBar from "../UI/ProgressBar";
 
 export default function Superpowers() {
@@ -14,26 +14,26 @@ export default function Superpowers() {
     {
       skill: "Product design",
       writeUp:
-        "Turning ideas into refined product experiences that solve real-world problems.",
+        "I design websites and apps that help businesses grow and connect with their audience.",
       img: superPower,
     },
     {
-      skill: "Brand & Graphics design",
+      skill: "Brand & identity design",
       writeUp:
-        "Turning ideas into refined product experiences that solve real-world problems.",
+        "I help brands discover their essence and shape identities that grow, stand out, and connect, creating experiences that tell a bigger story.",
       img: travelApp,
     },
     {
       skill: "Package design & printing",
       writeUp:
-        "Turning ideas into refined product experiences that solve real-world problems.",
+        "I design packaging that grabs attention, strengthens your brand, and delivers a premium shelf-ready experience.",
       img: superPower,
     },
     {
-      skill: "Product management",
+      skill: "Social media management",
       writeUp:
-        "Turning ideas into refined product experiences that solve real-world problems.",
-       img: travelApp,
+        "I manage social media that grows your audience, strengthens your brand, and turns engagement into real results.",
+      img: travelApp,
     },
   ];
   return (
@@ -74,14 +74,14 @@ export default function Superpowers() {
             {clipNotes.map(({ skill, writeUp }, index) => {
               const isActive = active === index;
               return (
-                <section className="relative transition-all duration-150">
+                <section className="relative">
                   <div
                     onClick={() => setActive(index)}
                     className={`bg-white w-full py-10 cursor-pointer `}
                   >
                     <div className={` w-10/12 mx-auto space-y-3`}>
                       <h3
-                        className={` font-semibold ${
+                        className={` capitalize font-semibold ${
                           isActive
                             ? "text-left text-[19.1px]"
                             : "text-center text-black-10 text-[19.4px]"
@@ -91,8 +91,8 @@ export default function Superpowers() {
                       </h3>
 
                       <p
-                        className={` ${
-                          isActive ? "block" : "hidden"
+                        className={` transition-all duration-500 ease-out ${
+                          isActive ? "opacity-100 h-full" : "opacity-0  h-0"
                         } text-black-300 text-base w-10/12 `}
                       >
                         {writeUp}
@@ -102,9 +102,10 @@ export default function Superpowers() {
                   {isActive && (
                     <div className=" ">
                       <ProgressBar
+                        isActive={isActive}
                         clipNotes={clipNotes}
                         setActive={setActive}
-                        durationTime={6}
+                        durationTime={9}
                       />
                     </div>
                   )}

@@ -1,33 +1,44 @@
 import React, { useEffect, useState } from "react";
 
-export default function ProgressBar({ setActive, durationTime, clipNotes }) {
+export default function ProgressBar({
+  setActive,
+  isActive,
+  durationTime,
+  clipNotes,
+}) {
   const [timeLeft, setTimeLeft] = useState(durationTime);
-  const [progress, setProgress] = useState(100);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      setActive((prevState) => {
-        let nextState = prevState + 1;
-        return clipNotes.length - 1 < nextState ? 0 : nextState;
-      });
+      setProgress(100);
+
+      setTimeout(() => {
+        setActive((prev) => {
+          let next = prev + 1;
+          return next > clipNotes.length - 1 ? 0 : next;
+        });
+        setTimeLeft(durationTime);
+        setProgress(0);
+      }, 1000);
+
       return;
     }
-    const timerId = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
+
+    const id = setInterval(() => {
+      setTimeLeft((t) => t - 1);
     }, 1000);
 
-    return () => {
-      clearInterval(timerId);
-    };
-  }, [timeLeft]);
+    return () => clearInterval(id);
+  }, [timeLeft, durationTime, setActive, clipNotes.length]);
 
   useEffect(() => {
-    const progressMade = (timeLeft / durationTime) * 100;
-    setProgress(progressMade);
+    const made = ((durationTime - timeLeft) / durationTime) * 100;
+    setProgress(made);
   }, [timeLeft, durationTime]);
 
   return (
-    <div className="w-full h-[2px]">
+    <div className={`w-full  transition-all duration-500 ease-in  ${isActive ? "h-[2px]" : "h-0"}`}>
       <div
         className="h-full bg-black"
         style={{
